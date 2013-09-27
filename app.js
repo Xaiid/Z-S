@@ -21,8 +21,8 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(authManager.middleware());
 app.use(app.router);
-app.use(authManager.notFound());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(authManager.notFound());
 
 // development only
 if ('development' === app.get('env')) {
