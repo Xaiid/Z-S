@@ -3,8 +3,8 @@ ZombieWorld.Entity.player = function(ID){
         .attr({
           x: Crafty.math.randomInt(100,130),
           y: Crafty.math.randomInt(100,130),
-          w: 32,
-          h: 32
+          w: ZombieWorld.map.title.width,
+          h: ZombieWorld.map.title.height
         })
         .requires('Keyboard')
         .PlayerControls()

@@ -14,7 +14,10 @@ var ZombieWorld = {
   Scene:     {},
 
   properties:{
-    solid_components: '2D, Canvas, Solid, Color, DOM, '
+    solid_components: '2D, Canvas, Solid, Color, DOM, ',
+    player: {
+      speed: 3
+    }
   },
 
   width: function(){

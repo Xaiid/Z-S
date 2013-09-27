@@ -1,5 +1,5 @@
 ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
-  _speed: 1,
+  _speed: ZombieWorld.properties.player.speed,
   _lastKey: '',
 
   PlayerControls: function() {
@@ -25,7 +25,7 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
 
       };
 
-      var cont = function(){ this._speed = 1; };
+      var cont = function(){ this._speed = ZombieWorld.properties.player.speed; };
 
       this.collision().onHit('Solid', stop, cont);
 
