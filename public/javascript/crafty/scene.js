@@ -1,4 +1,4 @@
-ZombieWorld.Scene.runScene = function(world){
+ZombieWorld.Scene.createWorld = function(world){
   //Set background initial color
   Crafty.background(world.options.color);
 
@@ -12,19 +12,36 @@ ZombieWorld.Scene.runScene = function(world){
       }
     }
 
-
     //Create walls
     for (var x = 0; x < ZombieWorld.map.width; x++) {
       for (var y = 0; y < ZombieWorld.map.height; y++) {
         var border = x === 0 || x === ZombieWorld.map.width - 1 || y === 0 || y === ZombieWorld.map.height - 1;
 
-        if (border) {
+        if(border) {
           ZombieWorld.Entity.Wall({x: x, y: y});
           this.occupied[x][y] = true;
         } 
       }
     }
+
+    ZombieWorld.Entity.Exit({
+      x: ZombieWorld.map.width - 1,
+      y: random_position(ZombieWorld.map.height - 2, 1)
+    });
+    ZombieWorld.Entity.Entrance({
+      x: 0,
+      y: random_position(ZombieWorld.map.height - 2 , 1)
+    });
   });
 
   Crafty.scene(world.options.name);
+};
+
+var random_position = function(max, min){
+  var r = Math.floor(Math.random() * (max - min + 1)) + min;
+  console.log(max);
+  console.log(min);
+  console.log(r);
+
+  return r;
 };
