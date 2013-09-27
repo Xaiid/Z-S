@@ -15,7 +15,7 @@ module.exports = {
 
   },
 
-  localStrategy: function(req, res) {
+  login: function(req, res) {
 
     var username = req.body.username;
     var password = req.body.password;
@@ -25,5 +25,11 @@ module.exports = {
       return done(err, username);
     }); // new LocalStrategy
 
+  },
+
+  logout: function(req, res){
+    req.logout();
+    res.redirect('/');
   }
+
 };
