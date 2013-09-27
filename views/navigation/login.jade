@@ -1,4 +1,12 @@
 extends ../layout
 
 block content
+
+  script(src="javascript/login.js")
+
   h1 Login page
+  form(id="loginForm")
+    label
+      Username
+    input(type="text", id="username")
+    input(type="submit", value="join")
