@@ -12,5 +12,5 @@ module.exports = function(app){
   app.get('/game',  navigation.game.bind(navigation));
 
   app.post('/login', authManager.authenticate('local'));
-  // app.get('/logout', authController.logout.bind(authController));
+  app.get('/logout', authManager.logout());
 };
