@@ -2,6 +2,7 @@ var ZombieWorld = {
 
   land: {},
 
+  socket: io.connect(),
   map: {
     width: 57,
     height: 32,
