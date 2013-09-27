@@ -15,6 +15,7 @@ var ZombieWorld = {
 
   properties:{
     solid_components: '2D, Canvas, Solid, Color, DOM, ',
+    components: '2D, Canvas, Color, DOM, ',
     player: {
       speed: 3
     }

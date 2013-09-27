@@ -1,4 +1,4 @@
-ZombieWorld.Entity.player = function(ID){
+ZombieWorld.Entity.Player = function(ID){
   return Crafty.e(ID + ", 2D, Canvas, Controls, Color, Collision, PlayerControls")
         .attr({
           x: Crafty.math.randomInt(100,130),

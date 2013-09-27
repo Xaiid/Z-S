@@ -1,11 +1,11 @@
 // A wall is an entity that works as an actor and is solid
-ZombieWorld.Entity.Entrance = function(options){ 
-  return Crafty.e(ZombieWorld.properties.solid_components + 'Entrance')
-  .color('rgb(161, 5, 25)')
+ZombieWorld.Entity.SafeZone = function(options){ 
+  return Crafty.e(ZombieWorld.properties.components + 'SafeZone')
+  .color('rgb(94, 198, 25)')
   .attr({
     x: (options.x * ZombieWorld.map.title.width),
     y: (options.y * ZombieWorld.map.title.height),
-    w: ZombieWorld.map.title.width,
+    w: ZombieWorld.map.title.width * 2,
     h: ZombieWorld.map.title.height * 3
   });
 
