@@ -12,23 +12,23 @@ ZombieWorld.Entity.zombie = function(zombie){
         .animate("walk_up", 0,  3, 2)
         .animate("walk_down", 0, 0 , 2)
         .bind("EnterFrame", function(e) {
-
-          if(this.isDown('LEFT_ARROW') && !this.isPlaying('walk_left')){
+          if(this.isDown("LEFT_ARROW")) {
+            if(!this.isPlaying("walk_left")){
               this.stop().animate("walk_left", 10);
-          }
-
-          if(this.isDown('RIGHT_ARROW') && !this.isPlaying('walk_right')){
+            }
+          } else if(this.isDown("RIGHT_ARROW")) {
+            if(!this.isPlaying("walk_right")){
               this.stop().animate("walk_right", 10);
-          }
-
-          if(this.isDown('UP_ARROW') && !this.isPlaying('walk_up')){
+            }
+          } else if(this.isDown("UP_ARROW")) {
+            if(!this.isPlaying("walk_up")){
               this.stop().animate("walk_up", 10);
-          }
-
-          if(this.isDown('DOWN_ARROW') && !this.isPlaying('walk_down')){
+            }
+          } else if(this.isDown("DOWN_ARROW")) {
+            if(!this.isPlaying("walk_down")){
               this.stop().animate("walk_down", 10);
+            }
           }
-        
         }).bind("keyup", function(e) {
           this.stop();
         });
