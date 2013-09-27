@@ -1,4 +1,4 @@
-
+var passport      = require('passport');
 /**
  * Module dependencies.
  */
@@ -17,11 +17,11 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.bodyParser());
-app.use(express.methodOverride());
 app.use(authManager.middleware());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.methodOverride());
 app.use(authManager.notFound());
 
 // development only
