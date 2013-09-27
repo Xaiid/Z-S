@@ -9,6 +9,8 @@ var express = require('express')
 
 var app = express();
 
+var authManager = require('./lib/auth/authManager').init();
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -17,6 +19,7 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.use(authManager.middleware());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
