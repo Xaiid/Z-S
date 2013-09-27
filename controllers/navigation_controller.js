@@ -9,5 +9,9 @@ module.exports = {
 
   game: function(req, res){
     res.render('navigation/game');
+  },
+
+  notFound: function(req, res){
+    res.render('navigation/404');
   }
 };
