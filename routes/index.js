@@ -1,8 +1,6 @@
+//All the routes are specified in here
+//var controller = require('mycontroller');
 
-/*
- * GET home page.
- */
-
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+modules.exports = function(app){
+  //app.method('route', controller.method.bind(controller));
 };
