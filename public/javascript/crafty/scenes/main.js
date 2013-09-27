@@ -9,6 +9,10 @@ ZombieWorld.Scene.main = {
 
   init: function(){
     ZombieWorld.Scene.createWorld(this);
+
+    //TODO this should after user picks a player
+    var playerID = 'player1'; //Player number for the sprite
+    ZombieWorld.Entity.player(playerID);
   }
 
 };
