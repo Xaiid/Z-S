@@ -31,5 +31,19 @@ ZombieWorld.Entity.zombie = function(zombie){
           }
         }).bind("keyup", function(e) {
           this.stop();
+        })
+        .onHit("wall_left", function() {
+          this.x += this._speed;
+          this.stop();
+        }).onHit("wall_right", function() {
+          this.x -= this._speed;
+          this.stop();
+        }).onHit("wall_bottom", function() {
+          this.y -= this._speed;
+          this.stop();
+        }).onHit("wall_top", function() {
+          this.y += this._speed;
+          this.stop();
         });
+        
 };

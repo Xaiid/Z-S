@@ -5,30 +5,15 @@ ZombieWorld.land.walls = function(cb){
   var sendCb = _.after(times, cb);
 
     for (var i = 0; i < ZombieWorld.map.width; i++) {
-      ZombieWorld.Entity.Wall({x: i, y: 0});
-      ZombieWorld.Entity.Wall({x: i, y: ZombieWorld.map.height - 1});
+      ZombieWorld.Entity.Wall({x: i, y: 0, name: 'wall_top'});
+      ZombieWorld.Entity.Wall({x: i, y: ZombieWorld.map.height - 1, name: 'wall_bottom'});
       sendCb();
     }
 
     for (var i = 0; i < ZombieWorld.map.height; i++) {
-      ZombieWorld.Entity.Wall({x: 0, y: i});
-
-
-      ZombieWorld.Entity.Wall({x: ZombieWorld.map.width - 1, y: i});
+      ZombieWorld.Entity.Wall({x: 0, y: i, name: 'wall_left'});
+      ZombieWorld.Entity.Wall({x: ZombieWorld.map.width - 1, y: i, name: 'wall_right'});
       sendCb();
     }
-  
-
-  //Create walls
-  // for (var x = 0; x < ZombieWorld.map.width; x++) {
-  //   for (var y = 0; y < ZombieWorld.map.height; y++) {
-  //     var border = x === 0 || x === ZombieWorld.map.width - 1 || y === 0 || y === ZombieWorld.map.height - 1;
-
-  //     if(border && !occupied[x][y]) {
-  //       ZombieWorld.Entity.Wall({x: x, y: y});
-  //       occupied[x][y] = true;
-  //     } 
-  //   }
-  // }
 
 };
