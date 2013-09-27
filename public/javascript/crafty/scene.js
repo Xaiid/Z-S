@@ -38,10 +38,5 @@ ZombieWorld.Scene.createWorld = function(world){
 };
 
 var random_position = function(max, min){
-  var r = Math.floor(Math.random() * (max - min + 1)) + min;
-  console.log(max);
-  console.log(min);
-  console.log(r);
-
-  return r;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
