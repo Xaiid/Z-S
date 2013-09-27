@@ -3,8 +3,11 @@ ZombieWorld.Scene.main = {
   options: {
     name: 'main',
     zombies: 2,
-    walls: 5,
-    obstacle: 10,
+    obstacles: {
+      large: 0,
+      medium: 4,
+      small: 10
+    },
     color: 'rgb(119, 119, 119)'
   },
 
