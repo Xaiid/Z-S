@@ -1,5 +1,7 @@
 var ZombieWorld = {
 
+  land: {},
+
   map: {
     width: 57,
     height: 32,
@@ -18,6 +20,9 @@ var ZombieWorld = {
     components: '2D, Canvas, Color, DOM, ',
     player: {
       speed: 3
+    },
+    zombie: {
+      speed: 1
     }
   },
 
