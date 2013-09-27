@@ -5,6 +5,8 @@ module.exports = {
 
   init: function(){
 
+    passport.use(this.localStrategy());
+
     passport.serializeUser(function(user, done) {
       done(null, user);
     });
@@ -15,7 +17,7 @@ module.exports = {
 
   },
 
-  login: function(req, res) {
+  localStrategy: function(req, res) {
 
     var username = req.body.username;
     var password = req.body.password;
@@ -25,6 +27,11 @@ module.exports = {
       return done(err, username);
     }); // new LocalStrategy
 
+  },
+
+  login: function(req, res){
+    passport.authenticate('local', { successRedirect: '/',
+                                     failureRedirect: '/login' });
   },
 
   logout: function(req, res){
