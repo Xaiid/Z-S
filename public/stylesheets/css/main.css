@@ -157,36 +157,61 @@ p {
   padding: 40px;
   text-align: center;
   line-height: 44px;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   max-height: 360px;
   white-space: nowrap;
 }
-/* line 36, ../sass/index.sass */
+/* line 37, ../sass/index.sass */
 #introduction .btn {
   margin-top: 40px;
 }
-/* line 38, ../sass/index.sass */
+/* line 39, ../sass/index.sass */
 #introduction::-webkit-scrollbar {
   height: 8px;
   width: 8px;
   background: inherit;
 }
-/* line 42, ../sass/index.sass */
+/* line 43, ../sass/index.sass */
 #introduction::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0);
   -webkit-border-radius: 1ex;
 }
-/* line 45, ../sass/index.sass */
+/* line 46, ../sass/index.sass */
 #introduction::-webkit-scrollbar-track {
   background: none;
 }
-/* line 49, ../sass/index.sass */
+/* line 50, ../sass/index.sass */
 #introduction .step-one {
   display: inline-block;
   width: 100%;
 }
-/* line 53, ../sass/index.sass */
+/* line 54, ../sass/index.sass */
 #introduction .step-two {
   display: inline-block;
   width: 100%;
+}
+
+/* line 58, ../sass/index.sass */
+.next, .prev {
+  float: right;
+  background: #bcb99e;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  line-height: 50px;
+  padding-left: 4px;
+  cursor: pointer;
+}
+/* line 67, ../sass/index.sass */
+.next:hover, .prev:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+}
+
+/* line 70, ../sass/index.sass */
+.prev {
+  float: left;
+  line-height: 49px;
+  padding-left: 1px;
 }

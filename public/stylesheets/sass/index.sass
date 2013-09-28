@@ -30,7 +30,8 @@ p
   padding: 40px
   text-align: center
   line-height: 44px
-  overflow: auto
+  overflow-x: auto
+  overflow-y: hidden
   max-height: 360px
   white-space: nowrap
   .btn
@@ -40,7 +41,7 @@ p
     width: 8px
     background: inherit
   &::-webkit-scrollbar-thumb
-    background: rgba(0,0,0,0.25)
+    background: rgba(0,0,0,0)
     -webkit-border-radius: 1ex
   &::-webkit-scrollbar-track
     background: none
@@ -54,4 +55,19 @@ p
     display: inline-block
     width: 100%
     
+.next, .prev
+  float: right
+  background: #bcb99e
+  height: 50px
+  width: 50px
+  border-radius: 25px
+  line-height: 50px
+  padding-left: 4px
+  cursor: pointer
+  &:hover
+    +opacity(.8)
 
+.prev
+  float: left
+  line-height: 49px
+  padding-left: 1px
