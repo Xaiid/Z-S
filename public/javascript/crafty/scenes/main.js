@@ -8,12 +8,21 @@ ZombieWorld.Scene.main = {
   },
 
   init: function(){
-    ZombieWorld.Scene.createWorld(this, function(){
-      //TODO this should after user picks a player
+
+    ZombieWorld.socket.on('update players', function(message, players){
+      var me = JSON.parse(localStorage.getItem('user'));
+      console.log('Me: ', me);
+
+      console.log('Message: ', message);
+      console.log('Players: ', players);
 
       // var playerID = 'player1'; //Player number for the sprite
       // ZombieWorld.Entity.Player(playerID);
-      ZombieWorld.Entity.zombie('zombie1');
+      // ZombieWorld.Entity.zombie('zombie1');
+    });
+
+    ZombieWorld.Scene.createWorld(this, function(){
+      ZombieWorld.socket.emit('Player list');
     });
 
     ZombieWorld.sprites = {

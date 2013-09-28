@@ -37,6 +37,11 @@ var ZombieWorld = {
 
   initialize: function(){
     console.log('Ready to kill zombies');
+
+    ZombieWorld.socket.on('Error', function(error){
+      console.log(error);
+    });
+
     //Initialize game space
     Crafty.init(ZombieWorld.width(), ZombieWorld.height());
 

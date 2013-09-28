@@ -1,24 +1,40 @@
-$( function(){
-  $('#loginForm').submit(function(event){
-    
-    var username = $('#username').val();
-    var arena   = $('#arena').val();
+var ZombieWorld = {
+  socket: io.connect(),
+  user: {}
+};
 
-   var request =  $.ajax({
+$( function(){
+
+  ZombieWorld.socket.on('welcome player', function(message){
+    console.log(message);
+
+    setTimeout(function(){
+      window.localStorage.setItem('user', JSON.stringify(ZombieWorld.user));
+      window.location.assign('/game');
+    }, 300);
+
+  });
+
+  $('#loginForm').submit(function(event){
+    event.preventDefault();
+
+    ZombieWorld.user.username = $('#username').val();
+    ZombieWorld.user.arena    = 'Stage 1';
+
+    var request = $.ajax({
       url: '/login',
       method: 'POST',
-      data: {username: username, password: 1234},
+      data: {username: ZombieWorld.user.username, password: 1234},
     });
 
     request.done(function(data){
-       console.log(data);
-       ZombieWorld.socket.emit('Create player', {username: username, arena: arena});
+      ZombieWorld.socket.emit('Create player', ZombieWorld.user);
     });
 
-    request.error(function(err){
-       console.log(err.responseText);
+    request.error(function(error){
+      console.log(error.responseText);
     });
 
-    event.preventDefault();
   });
+
 });

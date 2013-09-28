@@ -1,13 +1,10 @@
 extends ../layout
 
 block content
-
-  script(src="javascript/login.js")
+  script(src="/javascript/controllers/login.js")
 
   h1 Login page
-  form(id="loginForm")
+  form#loginForm
     label Username
-    input(type="text", id="username")
-    label Arena
-    input(type="text", id="arena")
-    input(type="submit", value="join")
+    input#username
+    input(type="submit", value="Join")
