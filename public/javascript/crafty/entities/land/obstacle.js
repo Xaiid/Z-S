@@ -1,6 +1,5 @@
 ZombieWorld.land.Obstacle = function(options, cb){ 
 
-  console.log(options.grid);
   var grid = options.grid;
   var obstacles = options.obstacles;
 
@@ -51,7 +50,6 @@ var populateGrid = function(options, cb){
     y: options.y + ZombieWorld.properties.obstacle[options.type].height
   };
 
-  console.log(origin.x);
   var available = true; 
 
   _.each(_.range(origin.x,destiny.x + 1), function(x){
