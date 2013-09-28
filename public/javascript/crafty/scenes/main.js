@@ -12,19 +12,25 @@ ZombieWorld.Scene.main = {
 
     ZombieWorld.socket.on('update players', function(message, players){
 
+      //Create Zombies
+      ZombieWorld.Entity.zombie('zombie1');
+      ZombieWorld.Entity.zombie('zombie2');
+
       var my_player = JSON.parse(localStorage.getItem('user'));
 
       _.each(players, function(player, username){
-
         if(!ZombieWorld.players[username]){
-          // player.Entity = ZombieWorld.Entity.zombie(my_player === username, 'zombie1');
           ZombieWorld.players[username] = player;
-          // var playerID = 'player1'; //Player number for the sprite
-          ZombieWorld.players[username].Entity = ZombieWorld.Entity.Player(my_player.username === username, 'player1');
-        }
 
-        ZombieWorld.Entity.zombie('zombie1');
-        ZombieWorld.Entity.zombie('zombie2');
+          var local = my_player.username === username;
+
+          if(local && player.zombieController){
+            ZombieWorld.player = false;
+          }else{
+            ZombieWorld.players[username].Entity = ZombieWorld.Entity.Player(local, 'player1');
+          }
+
+        }
       });
 
     });

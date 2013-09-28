@@ -11,56 +11,105 @@ ZombieWorld.land.grass = function(cb){
       //generate the grass along the y-axis
       for(var j = 0; j < ZombieWorld.map.height; j++) {
         Crafty.e("2D, Canvas, grass1, Mouse").attr({x: i * 30, y: j * 30})
-        .bind('MouseUp', function(e){
-          var endX = Math.floor(e.realX) -25;
-          var endY = Math.floor(e.realY) -25;
-          var directionX;
-          var directionY; 
-          var zombie;
+        .bind('Click', function(e){
 
-          if( e.mouseButton == Crafty.mouseButtons.RIGHT ){
-            _.each(Crafty('zombies'), function(id){
+          if(ZombieWorld.player && !ZombieWorld.player.moving){
+            ZombieWorld.player.moving = true;
 
-              if(Crafty(id).selected){
+            var startX  = ZombieWorld.player.x;
+            var startY  = ZombieWorld.player.y;
+            var speed   = ZombieWorld.properties.zombie.speed;
+            var self    = this;
+            var count   = [];
 
-                zombie = Crafty(id); 
-                var walk = function(cord, end, direction){
-
-                  zombie.stop().animate(direction, 15, -1);
-
-                  var interval =  setInterval(function(){
-                    if(zombie[cord] != end){
-
-                      if(zombie[cord] < end){
-                        return zombie[cord]++;
-                      }else{
-                        return zombie[cord]--;
-                      }
-                    }else{
-                      zombie.stop();
-                      walkY();
-                      clearInterval(interval); 
-                    }
-
-                  }, 30);
-
-                };
-
-                directionX = zombie.x < endX ? 'walk_right' : 'walk_left';
-                walk('x', endX, directionX);
-
-                var walkY = function(){
-                  if(zombie.y != endY){
-                    directionY =  zombie.y > endY ? 'walk_up' : 'walk_down';
-                    walk('y', endY, directionY);
-                  }else{
-                    zombie.selected = false;
-                  }
-                };
+            var ready = function(num){
+              count.push(num);
+              if(count.length === 4){
+                ZombieWorld.player.moving = false;
               }
+            };
+
+            removeX = function(cb){
+              if(startX <= self.x){ return cb(); }
+
+              var timer = function(){
+                setTimeout(function(){
+                  startX-=speed;
+                  ZombieWorld.player.x = startX;
+                  if(startX > self.x){
+                    timer();
+                  }else{ return cb(); }
+                }, 30);
+              };
+              timer();
+            };
+
+            addX = function(cb){
+              if(startX >= self.x){ return cb(); }
+
+              var timer = function(){
+                setTimeout(function(){
+                  startX+=speed;
+                  ZombieWorld.player.x = startX;
+                  if(startX < self.x){
+                    timer();
+                  }else{ return cb(); }
+                }, 30);
+              };
+              timer();
+            };
+
+            removeY = function(cb){
+              if(startY <= self.y){ return cb(); }
+
+              var timer = function(){
+                setTimeout(function(){
+                  startY-=speed;
+                  ZombieWorld.player.y = startY;
+                  if(startY > self.y){
+                    timer();
+                  }else{ return cb(); }
+                }, 30);
+              };
+              timer();
+            };
+
+            addY = function(cb){
+              if(startY >= self.y){ return cb(); }
+
+              var timer = function(){
+                setTimeout(function(){
+                  startY+=speed;
+                  ZombieWorld.player.y = startY;
+                  if(startY < self.y){
+                    timer();
+                  }else{ return cb(); }
+                }, 30);
+              };
+              timer();
+            };
+
+
+            removeX(function(){
+              ready(1);
             });
+
+            addX(function(){
+              ready(2);
+            });
+
+            removeY(function(){
+              ready(3);
+            });
+
+            addY(function(){
+              ready(4);
+            });
+
           }
+
         });
+
         sendCb();
       }
     }

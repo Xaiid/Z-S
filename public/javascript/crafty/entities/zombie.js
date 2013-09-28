@@ -1,6 +1,5 @@
 ZombieWorld.Entity.zombie = function(zombie){
   return Crafty.e("2D, Canvas, SpriteAnimation, Mouse, zombies, " + zombie)
-
         .attr({
           x: Crafty.math.randomInt(100,130),
           y: Crafty.math.randomInt(100,130)
