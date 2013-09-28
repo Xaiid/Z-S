@@ -18,7 +18,7 @@ ZombieWorld.Scene.main = {
 
       // var playerID = 'player1'; //Player number for the sprite
       // ZombieWorld.Entity.Player(playerID);
-      // ZombieWorld.Entity.zombie('zombie1');
+      ZombieWorld.Entity.zombie('zombie1');
     });
 
     ZombieWorld.Scene.createWorld(this, function(){
