@@ -67,15 +67,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 6, ../sass/main.sass */
 body {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-  overflow: hidden;
+  overflow: auto;
   font: 14px "mine", Helvetica, Arial, sans-serif;
   -webkit-background-size: 30px 30px;
   -moz-background-size: 30px 30px;
@@ -89,24 +81,112 @@ body {
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
 }
 
-/* line 25, ../sass/main.sass */
+/* line 23, ../sass/main.sass */
 #title {
   font-size: 60px;
 }
 
-/* line 28, ../sass/main.sass */
+/* line 26, ../sass/main.sass */
 .navbar.navbar-inverse {
   padding: 20px 40px;
   height: 100px;
   background: rgba(35, 28, 21, 0.4);
 }
-/* line 32, ../sass/main.sass */
+/* line 30, ../sass/main.sass */
 .navbar.navbar-inverse .navbar-collapse {
   background: transparent;
 }
-/* line 34, ../sass/main.sass */
+/* line 32, ../sass/main.sass */
 .navbar.navbar-inverse .logo-tango {
   text-align: right;
   float: right;
   margin: 10px;
+}
+
+/* line 37, ../sass/main.sass */
+footer {
+  background: rgba(0, 0, 0, 0.6);
+  height: 60px;
+  text-align: center;
+  padding-top: 17px;
+  color: #cdccbc;
+}
+
+/* line 1, ../sass/index.sass */
+#hand-fixed {
+  background: black url("../../images/zombie-hand.jpg") no-repeat;
+  background-size: 100%;
+  overflow: hidden;
+  position: fixed;
+  height: 90%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* line 12, ../sass/index.sass */
+h1 {
+  font-size: 24px;
+}
+
+/* line 15, ../sass/index.sass */
+p {
+  font-size: 18px;
+}
+
+/* line 18, ../sass/index.sass */
+.btn-primary {
+  background: #262f1e;
+  border-color: #1a1e16;
+}
+/* line 21, ../sass/index.sass */
+.btn-primary:hover {
+  background: #1a1e16;
+}
+
+/* line 24, ../sass/index.sass */
+#introduction {
+  -webkit-box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
+  width: 100%;
+  margin: 400px 0 0;
+  min-height: 350px;
+  background: #e3e1c7;
+  padding: 40px;
+  text-align: center;
+  line-height: 44px;
+  overflow: auto;
+  max-height: 360px;
+  white-space: nowrap;
+}
+/* line 36, ../sass/index.sass */
+#introduction .btn {
+  margin-top: 40px;
+}
+/* line 38, ../sass/index.sass */
+#introduction::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+  background: inherit;
+}
+/* line 42, ../sass/index.sass */
+#introduction::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.25);
+  -webkit-border-radius: 1ex;
+}
+/* line 45, ../sass/index.sass */
+#introduction::-webkit-scrollbar-track {
+  background: none;
+}
+/* line 49, ../sass/index.sass */
+#introduction .step-one {
+  display: inline-block;
+  width: 100%;
+}
+/* line 53, ../sass/index.sass */
+#introduction .step-two {
+  display: inline-block;
+  width: 100%;
 }
