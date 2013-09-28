@@ -1,5 +1,4 @@
 ZombieWorld.Scene.main = {
-
   options: {
     name: 'main',
     zombies: 2,
@@ -7,12 +6,13 @@ ZombieWorld.Scene.main = {
       large: 2,
       medium: 14,
       small: 20
-    },
-    color: 'rgb(119, 119, 119)'
+    }
   },
 
   init: function(){
-    this.grid = ZombieWorld.Scene.createGrid();
+    if(!this.grid){
+      this.grid = ZombieWorld.Scene.createGrid();
+    }
 
     ZombieWorld.socket.on('Create world', function(grid, players){
       if(grid){
@@ -20,27 +20,31 @@ ZombieWorld.Scene.main = {
         ZombieWorld.Scene.main.noBuild = true;
       }
 
-      ZombieWorld.Scene.createWorld(ZombieWorld.Scene.main, function(){
-        var my_player = JSON.parse(localStorage.getItem('user'));
+      var my_player  = JSON.parse(localStorage.getItem('user'));
+      var exists = _.find(players,function(elem){ return elem.username === my_player.username; });
 
-        my_player.grid = ZombieWorld.Scene.main.grid;
+      if(!exists){
+        ZombieWorld.Scene.createWorld(ZombieWorld.Scene.main, function(){
+          var my_player  = JSON.parse(localStorage.getItem('user'));
+          my_player.grid = ZombieWorld.Scene.main.grid;
 
-        if(!my_player.zombieController){
-          var coordinates        = getFreeCoordinates((ZombieWorld.map.width-10),(ZombieWorld.map.width-4));
-          var Zombiecoordinates1 = getFreeCoordinates(2,10);
-          var Zombiecoordinates2 = getFreeCoordinates(2,10);
+          if(!my_player.zombieController){
+            var coordinates        = getFreeCoordinates((ZombieWorld.map.width-10),(ZombieWorld.map.width-4));
+            var Zombiecoordinates1 = getFreeCoordinates(2,10);
+            var Zombiecoordinates2 = getFreeCoordinates(2,10);
 
-          my_player.x = coordinates.x;
-          my_player.y = coordinates.y;
+            my_player.x = coordinates.x;
+            my_player.y = coordinates.y;
 
-          my_player.Enemy = {
-            Pedro: {name: 'Pedro', coordinates: Zombiecoordinates1},
-            Juan:  {name: 'Juan',  coordinates: Zombiecoordinates2}
-          };
-        }
+            my_player.Enemy = {
+              Pedro: {name: 'Pedro', coordinates: Zombiecoordinates1},
+              Juan:  {name: 'Juan',  coordinates: Zombiecoordinates2}
+            };
+          }
 
-        ZombieWorld.socket.emit('Create player', my_player);
-      });
+          ZombieWorld.socket.emit('Create player', my_player);
+        });
+      }
     });
 
     ZombieWorld.socket.on('remove player', function(message, player){

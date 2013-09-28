@@ -15,33 +15,34 @@ ZombieWorld.land.Obstacle = function(options, cb){
     small: obstacles.small
   };
 
-  var sendCb = _.after(times, cb);
+  var sendCb = _.after(times, function(){
+    return cb();
+  });
 
   if(options.noBuild){
     for (var x = 1; x < ZombieWorld.map.width - 1; x++) {
       for (var y = 1; y < ZombieWorld.map.height - 1; y++) {
         if (grid[x][y]){
           //Create object
-          ZombieWorld.Entity.Obstacle({ x: x, y: y, type: 'copy'});
+          ZombieWorld.Entity.Obstacle({ x: x, y: y, type: type});
         }
         sendCb();
       }
     }
   } else {
-    while(Crafty('Obstacle').length < times){
+    while(count.large > 0 || count.medium > 0 || count.small > 0){
       for (var x = 1; x < ZombieWorld.map.width - 2; x++) {
         for (var y = 1; y < ZombieWorld.map.height - 2; y++) {
-          if (Math.random() < 0.02 && Crafty('Obstacle').length < times){
+          if (Math.random() < 0.02){
             // Place a obstacle at the current tile
             var type = _.sample(['small', 'medium', 'large']);
 
-            if(Crafty('Obstacle').length < times && count[type] > 0){
+            if(count[type] > 0){
               //Take spots necessary fot that object
               populateGrid({x: x, y: y, type: type, grid: grid}, function(free){
                 if(free){
                   //Create object
                   count[type] -= 1;
-                  ZombieWorld.Entity.Obstacle({ x: x, y: y, type: type});
                   sendCb();
                 }
               });
@@ -74,11 +75,11 @@ var populateGrid = function(options, cb){
     });
   });
 
-
   if(available){
   _.each(_.range(origin.x,destiny.x + 1), function(x){
     _.each(_.range(origin.y,destiny.y), function(y){
       options.grid[x][y] = true;
+      ZombieWorld.Entity.Obstacle({ x: x, y: y, type: options.type});
     });
   });
   }

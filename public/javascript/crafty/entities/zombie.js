@@ -1,5 +1,5 @@
 ZombieWorld.Entity.zombie = function(zombie, options){
- var zombieProto = Crafty.e("2D, Canvas, Collision, SpriteAnimation, Mouse, PlayerControls, " + zombie)
+ var zombieProto = Crafty.e("2D, Canvas, Solid, Collision, SpriteAnimation, Mouse, PlayerControls, " + zombie)
         .attr({
           x: (options.x * ZombieWorld.map.title.width),
           y: (options.y * ZombieWorld.map.title.height)
