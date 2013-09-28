@@ -23,6 +23,7 @@ ZombieWorld.land.grass = function(cb){
             var count   = [];
 
             var ready = function(num){
+              ZombieWorld.player.stop();
               count.push(num);
               if(count.length === 4){
                 ZombieWorld.player.moving = false;
@@ -31,9 +32,9 @@ ZombieWorld.land.grass = function(cb){
 
             removeX = function(cb){
               if(startX <= self.x){ return cb(); }
-
               var timer = function(){
                 setTimeout(function(){
+                  ZombieWorld.player.animate('walk_left', 15, -1);
                   startX-=speed;
                   ZombieWorld.player.x = startX;
                   if(startX > self.x){
@@ -49,6 +50,7 @@ ZombieWorld.land.grass = function(cb){
 
               var timer = function(){
                 setTimeout(function(){
+                  ZombieWorld.player.animate('walk_right', 15, -1);
                   startX+=speed;
                   ZombieWorld.player.x = startX;
                   if(startX < self.x){
@@ -64,6 +66,7 @@ ZombieWorld.land.grass = function(cb){
 
               var timer = function(){
                 setTimeout(function(){
+                  ZombieWorld.player.animate('walk_up', 15, -1);
                   startY-=speed;
                   ZombieWorld.player.y = startY;
                   if(startY > self.y){
@@ -79,6 +82,7 @@ ZombieWorld.land.grass = function(cb){
 
               var timer = function(){
                 setTimeout(function(){
+                  ZombieWorld.player.animate('walk_down', 10, -1);
                   startY+=speed;
                   ZombieWorld.player.y = startY;
                   if(startY < self.y){
