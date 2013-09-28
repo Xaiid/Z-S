@@ -1,5 +1,5 @@
 ZombieWorld.Entity.Player = function(local, player){
-  var playerProto = Crafty.e("2D, Canvas, Controls, Collision, SpriteAnimation, PlayerControls, " + player)
+  var playerProto = Crafty.e("2D, Canvas, Controls, Collision, Fourway, SpriteAnimation, PlayerControls, " + player)
         .attr({
           x: Crafty.math.randomInt(100,130),
           y: Crafty.math.randomInt(100,130),
@@ -11,41 +11,48 @@ ZombieWorld.Entity.Player = function(local, player){
         .animate("walk_down", 0, 0 , 2);
 
     if(local){
-        playerProto.PlayerControls()
-        .bind("EnterFrame", function(e) {
-          if(this.isDown("LEFT_ARROW")) {
-            if(!this.isPlaying("walk_left")){
-              this.stop().animate("walk_left", 10);
-            }
-          } else if(this.isDown("RIGHT_ARROW")) {
-            if(!this.isPlaying("walk_right")){
-              this.stop().animate("walk_right", 10);
-            }
-          } else if(this.isDown("UP_ARROW")) {
-            if(!this.isPlaying("walk_up")){
-              this.stop().animate("walk_up", 10);
-            }
-          } else if(this.isDown("DOWN_ARROW")) {
-            if(!this.isPlaying("walk_down")){
-              this.stop().animate("walk_down", 10);
-            }
-          }
-        }).bind("keyup", function(e) {
+      //playerProto.PlayerControls()
+      playerProto.fourway(ZombieWorld.properties.player.speed)
+      .bind('NewDirection', function(data) {
+        if (data.x > 0) {
+          this.animate('walk_right', ZombieWorld.properties.animation_speed, -1);
+        } else if (data.x < 0) {
+          this.animate('walk_left', ZombieWorld.properties.animation_speed, -1);
+        } else if (data.y > 0) {
+          this.animate('walk_down', ZombieWorld.properties.animation_speed, -1);
+        } else if (data.y < 0) {
+          this.animate('walk_up', ZombieWorld.properties.animation_speed, -1);
+        } else {
           this.stop();
-        })
-        .onHit("wall_left", function() {
-          this.x += this._speed;
-          this.stop();
-        }).onHit("wall_right", function() {
-          this.x -= this._speed;
-          this.stop();
-        }).onHit("wall_bottom", function() {
-          this.y -= this._speed;
-          this.stop();
-        }).onHit("wall_top", function() {
-          this.y += this._speed;
-          this.stop();
-        });
+        }
+      })
+      .stopOnSolids()
+      .bind("EnterFrame", function(e) {
+        if(this.isDown("LEFT_ARROW")) {
+          ZombieWorld.socket.emit('Move', {x: this.x, y: this.y, to: "LEFT_ARROW"});
+        } else if(this.isDown("RIGHT_ARROW")) {
+          ZombieWorld.socket.emit('Move', {x: this.x, y: this.y, to: "RIGHT_ARROW"});
+        } else if(this.isDown("UP_ARROW")) {
+          ZombieWorld.socket.emit('Move', {x: this.x, y: this.y, to: "UP_ARROW"});
+        } else if(this.isDown("DOWN_ARROW")) {
+          ZombieWorld.socket.emit('Move', {x: this.x, y: this.y, to: "DOWN_ARROW"});
+        }
+      //}).bind("keyup", function(e) {
+        //this.stop();
+      //})
+      //.onHit("wall_left", function() {
+        //this.x += this._speed;
+        //this.stop();
+      //}).onHit("wall_right", function() {
+        //this.x -= this._speed;
+        //this.stop();
+      //}).onHit("wall_bottom", function() {
+        //this.y -= this._speed;
+        //this.stop();
+      //}).onHit("wall_top", function() {
+        //this.y += this._speed;
+        //this.stop();
+      });
     }else{
       playerProto.listenTo();
     }
