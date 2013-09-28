@@ -75,6 +75,14 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
       }
 
     });
+
+    ZombieWorld.socket.on('Move zombie', function(data){
+
+      ZombieWorld.currentPlayer.Enemy[data.who].Entity.x = data.x;
+      ZombieWorld.currentPlayer.Enemy[data.who].Entity.y = data.y;
+      ZombieWorld.currentPlayer.Enemy[data.who].Entity.animate(data.to, 10);
+
+    });
   }
 
 });
