@@ -19,7 +19,7 @@ ZombieWorld.land.Obstacle = function(options, cb){
 
   while(Crafty('Obstacle').length < times){
     if(options.noBuild){
-      for (var x = 1; x < ZombieWorld.map.width - 2; x++) {
+      for (var x = 1; x < ZombieWorld.map.width - 1; x++) {
         for (var y = 1; y < ZombieWorld.map.height - 1; y++) {
           if (grid[x][y]){
             //Create object
