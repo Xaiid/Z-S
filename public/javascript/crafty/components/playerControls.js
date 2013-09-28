@@ -44,7 +44,7 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
 
   listenTo: function(){
 
-    ZombieWorld.socket.on('Move', function(data){
+    ZombieWorld.socket.on('Move player', function(data){
 
       var self = ZombieWorld.players[data.username].Entity;
       if(!self){ return false; }

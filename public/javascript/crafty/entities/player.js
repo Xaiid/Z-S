@@ -11,7 +11,6 @@ ZombieWorld.Entity.Player = function(local, player){
         .animate("walk_down", 0, 0 , 2);
 
     if(local){
-      //playerProto.PlayerControls()
       playerProto.fourway(ZombieWorld.properties.player.speed)
       .bind('NewDirection', function(data) {
         if (data.x > 0) {
@@ -29,29 +28,14 @@ ZombieWorld.Entity.Player = function(local, player){
       .stopOnSolids()
       .bind("EnterFrame", function(e) {
         if(this.isDown("LEFT_ARROW")) {
-          ZombieWorld.socket.emit('Move', {x: this.x, y: this.y, to: "LEFT_ARROW"});
+          ZombieWorld.socket.emit('Move player', {x: this.x, y: this.y, to: "LEFT_ARROW"});
         } else if(this.isDown("RIGHT_ARROW")) {
-          ZombieWorld.socket.emit('Move', {x: this.x, y: this.y, to: "RIGHT_ARROW"});
+          ZombieWorld.socket.emit('Move player', {x: this.x, y: this.y, to: "RIGHT_ARROW"});
         } else if(this.isDown("UP_ARROW")) {
-          ZombieWorld.socket.emit('Move', {x: this.x, y: this.y, to: "UP_ARROW"});
+          ZombieWorld.socket.emit('Move player', {x: this.x, y: this.y, to: "UP_ARROW"});
         } else if(this.isDown("DOWN_ARROW")) {
-          ZombieWorld.socket.emit('Move', {x: this.x, y: this.y, to: "DOWN_ARROW"});
+          ZombieWorld.socket.emit('Move player', {x: this.x, y: this.y, to: "DOWN_ARROW"});
         }
-      //}).bind("keyup", function(e) {
-        //this.stop();
-      //})
-      //.onHit("wall_left", function() {
-        //this.x += this._speed;
-        //this.stop();
-      //}).onHit("wall_right", function() {
-        //this.x -= this._speed;
-        //this.stop();
-      //}).onHit("wall_bottom", function() {
-        //this.y -= this._speed;
-        //this.stop();
-      //}).onHit("wall_top", function() {
-        //this.y += this._speed;
-        //this.stop();
       });
     }else{
       playerProto.listenTo();
