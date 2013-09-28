@@ -23,6 +23,8 @@ ZombieWorld.Scene.main = {
           ZombieWorld.players[username].Entity = ZombieWorld.Entity.Player(my_player.username === username, 'player1');
         }
 
+        ZombieWorld.Entity.zombie('zombie1');
+        ZombieWorld.Entity.zombie('zombie2');
       });
 
     });
@@ -36,7 +38,8 @@ ZombieWorld.Scene.main = {
     ZombieWorld.sprites = {
 
       zombies: Crafty.sprite(32, "/images/Zombie-C.png", {
-        zombie1: [0,0]
+        zombie1: [0,0],
+        zombie2: [0,0]
       }),
 
       players: Crafty.sprite(32, "/images/power-tanger.png", {
