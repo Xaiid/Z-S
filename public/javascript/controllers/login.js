@@ -20,6 +20,8 @@ $( function(){
 
     ZombieWorld.user.username = $('#username').val();
     ZombieWorld.user.arena    = 'Stage 1';
+    //From list
+    ZombieWorld.user.name     = 'player1';
 
     var request = $.ajax({
       url: '/login',

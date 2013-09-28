@@ -10,6 +10,17 @@ ZombieWorld.Scene.main = {
 
   init: function(){
 
+    ZombieWorld.socket.on('remove player', function(message, player){
+      console.log(message);
+      if(!ZombieWorld.players[player]){ return false; }
+      _.each(ZombieWorld.players[player].Enemies, function(Enemie){
+        Enemie.destroy();
+      });
+
+      ZombieWorld.players[player].Entity.destroy();
+      delete ZombieWorld.players[player];
+    });
+
     ZombieWorld.socket.on('update players', function(message, players){
       console.log(message);
 
@@ -45,7 +56,6 @@ ZombieWorld.Scene.main = {
       my_player.x = x;
       my_player.y = y;
 
-      my_player.name = 'player1';
       ZombieWorld.socket.emit('Create player', my_player);
       // ZombieWorld.socket.emit('Player list');
     });
