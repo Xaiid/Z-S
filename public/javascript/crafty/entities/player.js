@@ -46,6 +46,8 @@ ZombieWorld.Entity.Player = function(local, player){
           this.y += this._speed;
           this.stop();
         });
+    }else{
+      playerProto.listenTo();
     }
 
     return playerProto;
