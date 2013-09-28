@@ -4,7 +4,7 @@ ZombieWorld.land.Obstacle = function(options, cb){
   var obstacles = options.obstacles;
 
   if(options.noBuild){
-    var times = ZombieWorld.map.width * ZombieWorld.map.height;
+    var times = (ZombieWorld.map.width - 2) * (ZombieWorld.map.height - 2);
   } else {
     var times = obstacles.large + obstacles.medium + obstacles.small;
   }
@@ -17,18 +17,18 @@ ZombieWorld.land.Obstacle = function(options, cb){
 
   var sendCb = _.after(times, cb);
 
-  while(Crafty('Obstacle').length < times){
-    if(options.noBuild){
-      for (var x = 1; x < ZombieWorld.map.width - 1; x++) {
-        for (var y = 1; y < ZombieWorld.map.height - 1; y++) {
-          if (grid[x][y]){
-            //Create object
-            ZombieWorld.Entity.Obstacle({ x: x, y: y, type: 'copy'});
-            sendCb();
-          }
+  if(options.noBuild){
+    for (var x = 1; x < ZombieWorld.map.width - 1; x++) {
+      for (var y = 1; y < ZombieWorld.map.height - 1; y++) {
+        if (grid[x][y]){
+          //Create object
+          ZombieWorld.Entity.Obstacle({ x: x, y: y, type: 'copy'});
         }
+        sendCb();
       }
-    } else {
+    }
+  } else {
+    while(Crafty('Obstacle').length < times){
       for (var x = 1; x < ZombieWorld.map.width - 2; x++) {
         for (var y = 1; y < ZombieWorld.map.height - 2; y++) {
           if (Math.random() < 0.02 && Crafty('Obstacle').length < times){
