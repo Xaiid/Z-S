@@ -10,6 +10,43 @@ ZombieWorld.Scene.main = {
 
   init: function(){
 
+    ZombieWorld.socket.on('Move', function(data){
+
+      var self = ZombieWorld.players[data.username].Entity;
+      if(!self){ return false; }
+
+      self.x = data.x;
+      self.y = data.y;
+
+      if(data.to === "LEFT_ARROW") {
+
+        if(!self.isPlaying("walk_left")){
+          self.stop().animate("walk_left", 10);
+        }
+
+      } else if(data.to === "RIGHT_ARROW") {
+
+        if(!self.isPlaying("walk_right")){
+          self.stop().animate("walk_right", 10);
+        }
+
+      } else if(data.to === "UP_ARROW") {
+
+        if(!self.isPlaying("walk_up")){
+          self.stop().animate("walk_up", 10);
+        }
+
+      } else if(data.to === "DOWN_ARROW") {
+
+        if(!self.isPlaying("walk_down")){
+          self.stop().animate("walk_down", 10);
+        }
+
+      }
+
+    });
+
+
     ZombieWorld.socket.on('update players', function(message, players){
 
       var my_player = JSON.parse(localStorage.getItem('user'));
@@ -20,7 +57,7 @@ ZombieWorld.Scene.main = {
           // player.Entity = ZombieWorld.Entity.zombie(my_player === username, 'zombie1');
           ZombieWorld.players[username] = player;
           // var playerID = 'player1'; //Player number for the sprite
-          ZombieWorld.Entity.Player(my_player.username === username, 'player1');
+          ZombieWorld.players[username].Entity = ZombieWorld.Entity.Player(my_player.username === username, 'player1');
         }
 
       });
@@ -28,6 +65,8 @@ ZombieWorld.Scene.main = {
     });
 
     ZombieWorld.Scene.createWorld(this, function(){
+      var my_player = JSON.parse(localStorage.getItem('user'));
+      ZombieWorld.socket.emit('Create player', my_player);
       ZombieWorld.socket.emit('Player list');
     });
 

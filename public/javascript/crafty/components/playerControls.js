@@ -5,19 +5,23 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
     this.bind('EnterFrame', function() {
       if(this.isDown("RIGHT_ARROW")){ 
         this.x += this._speed; 
+        ZombieWorld.socket.emit('Move', {x: this.x, y: this.y, to: "RIGHT_ARROW"});
       }
 
       else if(this.isDown("LEFT_ARROW")){ 
         this.x -= this._speed; 
+        ZombieWorld.socket.emit('Move', {x: this.x, y: this.y, to: "LEFT_ARROW"});
       }
 
       else if(this.isDown("UP_ARROW")){ 
         this.y -= this._speed; 
+        ZombieWorld.socket.emit('Move', {x: this.x, y: this.y, to: "UP_ARROW"});
       }
 
 
       else if(this.isDown("DOWN_ARROW")){ 
         this.y += this._speed; 
+        ZombieWorld.socket.emit('Move', {x: this.x, y: this.y, to: "DOWN_ARROW"});
       }
 
     });
