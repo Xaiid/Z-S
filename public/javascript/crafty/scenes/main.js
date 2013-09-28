@@ -37,10 +37,20 @@ ZombieWorld.Scene.main = {
             console.log(player);
             ZombieWorld.players[username] = player;
             ZombieWorld.players[username].Entity = ZombieWorld.Entity.Player(local, player);
-            ZombieWorld.players[username].Enemies = [
-              ZombieWorld.Entity.zombie('zombie1'),
-              ZombieWorld.Entity.zombie('zombie2')
-            ];
+
+            _.each(ZombieWorld.players[username].Enemy, function(zombie, id){
+              ZombieWorld.players[username].Enemy[id].Entity = ZombieWorld.Entity.zombie('zombie1');
+              ZombieWorld.players[username].Enemy[id].Entity.name = zombie.name;
+            });
+
+            if(local){
+              ZombieWorld.currentPlayer = ZombieWorld.players[username];
+            }
+
+            //ZombieWorld.players[username].Enemies = [
+              //ZombieWorld.Entity.zombie('zombie1'),
+              //ZombieWorld.Entity.zombie('zombie2')
+            //];
           }
         }
 
@@ -55,6 +65,11 @@ ZombieWorld.Scene.main = {
 
       my_player.x = x;
       my_player.y = y;
+
+      my_player.Enemy = {
+        Pedro: {name: 'Pedro'},
+        Juan: {name: 'Juan'}
+      };
 
       ZombieWorld.socket.emit('Create player', my_player);
       // ZombieWorld.socket.emit('Player list');
