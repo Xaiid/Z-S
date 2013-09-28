@@ -21,12 +21,11 @@ ZombieWorld.Scene.main = {
       }
 
       ZombieWorld.Scene.createWorld(ZombieWorld.Scene.main, function(){
-        var x = Crafty.math.randomInt(1070,1090);
-        var y = Crafty.math.randomInt(100,1000);
         var my_player = JSON.parse(localStorage.getItem('user'));
 
-        my_player.x = x;
-        my_player.y = y;
+        var coordinates = getFreeCoordinates((ZombieWorld.map.width-10),(ZombieWorld.map.width-4));
+        my_player.x = coordinates.x;
+        my_player.y = coordinates.y;
         my_player.grid = ZombieWorld.Scene.main.grid;
 
         my_player.Enemy = {
@@ -67,7 +66,8 @@ ZombieWorld.Scene.main = {
             ZombieWorld.players[username].Entity = ZombieWorld.Entity.Player(local, player);
 
             _.each(ZombieWorld.players[username].Enemy, function(zombie, id){
-              ZombieWorld.players[username].Enemy[id].Entity = ZombieWorld.Entity.zombie('zombie1');
+              var coordinates = getFreeCoordinates(2,10);
+              ZombieWorld.players[username].Enemy[id].Entity = ZombieWorld.Entity.zombie('zombie1', coordinates);
               ZombieWorld.players[username].Enemy[id].Entity.name = zombie.name;
             });
 
@@ -112,4 +112,27 @@ ZombieWorld.Scene.main = {
 
   }
 
+};
+
+var getFreeCoordinates = function(min,max){
+  var grid = ZombieWorld.Scene.main.grid;
+  var i = Math.ceil(ZombieWorld.map.height/2)
+  for(var x = 1; x < 4; x++){
+    for(var y = i; y < i+4; y++){
+      grid[x][y] = true;
+      grid[x][y] = true;
+      grid[x][y] = true;
+      grid[x][y] = true;
+    }
+  }
+
+  var x = Crafty.math.randomInt(min,max);
+  var y = Crafty.math.randomInt(3,(ZombieWorld.map.height-4));
+
+  while( grid[x-1][y-1] || grid[x][y-1] || grid[x+1][y-1] || grid[x][y-1] || grid[x][y] || grid[x-1][y+1] || grid[x][y+1] || grid[x+1][y+1]){
+    x = Crafty.math.randomInt(min,max);
+    y = Crafty.math.randomInt(3,(ZombieWorld.map.height-4));
+  }
+
+  return {x: x, y: y};
 };
