@@ -16,17 +16,19 @@ html
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.navbar-brand(href="#") Brand
+        a.navbar-brand#title(href="/") ZombieWorld
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      .navbar-collapse.navbar-ex8-collapse.collapse(style="height: 1px;")
+      .navbar-collapse.navbar-ex8-collapse.collapse.col-md-6
         ul.nav.navbar-nav
           li.active 
             a(href="#") Home
           li
-            a(href="#") Link
+            a(href="#") Sign in
           li
-            a(href="#") Link
+            a(href="#") Game
+
+      .col-lg-6.pull-rigth.logo-tango
+        img(src="/images/logo.png")
 
 
     block content
