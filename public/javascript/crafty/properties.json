@@ -9,6 +9,7 @@ ZombieWorld.properties = {
   "zombie": {
     "speed": 1
   },
+  //Width indicate how many spaces more (default 1) will this obstacle take
   "obstacle": {
     "large": {
       "width": 3,
@@ -16,13 +17,13 @@ ZombieWorld.properties = {
       "color": "rgb(17, 20, 122)"
     },
     "medium": {
-      "width": 2,
+      "width": 1,
       "height": 3,
       "color": "rgb(33, 86, 174)"
     },
     "small": {
-      "width": 2,
-      "height": 2,
+      "width": 0,
+      "height": 3,
       "color": "rgb(96, 215, 245)"
     }
   }
