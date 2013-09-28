@@ -5,7 +5,7 @@ ZombieWorld.land.grass = function(cb){
   var sendCb = _.after(times, cb);
 
   //Build grass
-  Crafty.load(["/images/grass.png"], function() {
+  Crafty.load(["/images/arenas.png"], function() {
     //generate the grass along the x-axis
     for(var i = 0; i < ZombieWorld.map.width; i++) {
       //generate the grass along the y-axis
