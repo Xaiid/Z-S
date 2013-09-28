@@ -3,7 +3,14 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
 
   stopOnSolids: function() {
     this.onHit('Solid', this.stopMovement);
- 
+    return this;
+  },
+
+  stopOnSolidsZ: function() {
+
+    this.onHit('Solid', function(){
+      console.log('Hit');
+    });
     return this;
   },
  
@@ -15,6 +22,7 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
       this.y -= this._movement.y;
     }
   },
+
 
   //PlayerControls: function() {
     //this.bind('EnterFrame', function() {
