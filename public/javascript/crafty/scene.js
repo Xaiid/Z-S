@@ -8,10 +8,8 @@ ZombieWorld.Scene.createWorld = function(world, cb){
   var sendCb = _.after(wait.length, function(){
     ZombieWorld.land.Obstacle({grid: world.grid, obstacles: world.options.obstacles}, function(){
       console.log('Obstacles ready');
-
       return cb();
     });
-
   });
 
   ZombieWorld.land.walls({grid: world.grid}, function(){

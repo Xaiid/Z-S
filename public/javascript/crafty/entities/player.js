@@ -1,5 +1,5 @@
 ZombieWorld.Entity.Player = function(local, player){
-  var playerProto = Crafty.e(ZombieWorld.properties.player_character + "Controls, Fourway, SpriteAnimation, PlayerControls, " + player)
+  var playerProto = Crafty.e(ZombieWorld.properties.player_character + "Collision, Fourway, SpriteAnimation, PlayerControls, " + player)
         .attr({
           x: player.x,
           y: player.y,
