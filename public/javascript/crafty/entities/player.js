@@ -1,9 +1,5 @@
 ZombieWorld.Entity.Player = function(local, player){
-<<<<<<< HEAD
-  var playerProto = Crafty.e("2D, Canvas, Controls, Collision, Fourway, SpriteAnimation, PlayerControls, " + player.name)
-=======
-  var playerProto = Crafty.e(ZombieWorld.properties.player_character + "Controls, Fourway, SpriteAnimation, " + player)
->>>>>>> Removed independet obstacle entities and first aproach to obstacles distribution
+  var playerProto = Crafty.e(ZombieWorld.properties.player_character + "Controls, Fourway, SpriteAnimation, PlayerControls, " + player)
         .attr({
           x: player.x,
           y: player.y,
