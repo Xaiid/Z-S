@@ -13,7 +13,7 @@ ZombieWorld.land.grass = function(cb){
         Crafty.e("2D, Canvas, grass1, Mouse").attr({x: i * 30, y: j * 30})
         .bind('Click', function(e){
 
-          if(ZombieWorld.player && !ZombieWorld.player.moving){
+          if(ZombieWorld.player && !ZombieWorld.player.moving && ZombieWorld.control){
             ZombieWorld.player.moving = true;
 
             var startX  = ZombieWorld.player.x;

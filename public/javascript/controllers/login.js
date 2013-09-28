@@ -5,11 +5,11 @@ var ZombieWorld = {
 
 $( function(){
 
-  ZombieWorld.socket.on('welcome player', function(message){
+  ZombieWorld.socket.on('update players', function(message, players){
     console.log(message);
 
     setTimeout(function(){
-      window.localStorage.setItem('user', JSON.stringify(ZombieWorld.user));
+      window.localStorage.setItem('user', JSON.stringify(players[ZombieWorld.user.username]));
       window.location.assign('/game');
     }, 300);
 

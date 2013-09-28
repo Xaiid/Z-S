@@ -6,7 +6,7 @@ ZombieWorld.Entity.zombie = function(zombie){
         })
        .bind('Click', function(e) {
 
-         if(!ZombieWorld.player.moving){
+         if(!ZombieWorld.player.moving && ZombieWorld.control){
            ZombieWorld.player = this;
          }
 
