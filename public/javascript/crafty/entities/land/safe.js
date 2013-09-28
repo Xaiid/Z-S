@@ -4,7 +4,6 @@ ZombieWorld.land.safeZone = function(options, cb){
 
   var sendCb = _.after((3*4),cb);
 
-  console.log(i)
   var cont = 0;
   for(var x = 1; x < 4; x++){
     for(var y = i; y < i+4; y++){
