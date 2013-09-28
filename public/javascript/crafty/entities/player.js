@@ -1,8 +1,8 @@
 ZombieWorld.Entity.Player = function(local, player){
-  var playerProto = Crafty.e("2D, Canvas, Controls, Collision, Fourway, SpriteAnimation, PlayerControls, " + player)
+  var playerProto = Crafty.e("2D, Canvas, Controls, Collision, Fourway, SpriteAnimation, PlayerControls, " + player.name)
         .attr({
-          x: Crafty.math.randomInt(100,130),
-          y: Crafty.math.randomInt(100,130),
+          x: player.x,
+          y: player.y,
         })
         .requires('Keyboard')
         .animate("walk_left", 0 , 1,  2)

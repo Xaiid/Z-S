@@ -23,8 +23,9 @@ ZombieWorld.Scene.main = {
         if(!ZombieWorld.players[username]){
           if(!player.zombieController){
             var local = my_player.username === username;
+            console.log(player);
             ZombieWorld.players[username] = player;
-            ZombieWorld.players[username].Entity = ZombieWorld.Entity.Player(local, 'player1');
+            ZombieWorld.players[username].Entity = ZombieWorld.Entity.Player(local, player);
             ZombieWorld.players[username].Enemies = [
               ZombieWorld.Entity.zombie('zombie1'),
               ZombieWorld.Entity.zombie('zombie2')
@@ -37,7 +38,14 @@ ZombieWorld.Scene.main = {
     });
 
     ZombieWorld.Scene.createWorld(this, function(){
+      var x = Crafty.math.randomInt(1070,1090);
+      var y = Crafty.math.randomInt(100,1000);
       var my_player = JSON.parse(localStorage.getItem('user'));
+
+      my_player.x = x;
+      my_player.y = y;
+
+      my_player.name = 'player1';
       ZombieWorld.socket.emit('Create player', my_player);
       // ZombieWorld.socket.emit('Player list');
     });
