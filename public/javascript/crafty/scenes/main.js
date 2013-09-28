@@ -3,12 +3,41 @@ ZombieWorld.Scene.main = {
   options: {
     name: 'main',
     zombies: 2,
-    walls: 5,
-    obstacle: 10,
+    obstacles: {
+      large: 2,
+      medium: 14,
+      small: 20
+    },
     color: 'rgb(119, 119, 119)'
   },
 
   init: function(){
+    this.grid = ZombieWorld.Scene.createGrid();
+
+    ZombieWorld.socket.on('Create world', function(grid){
+      if(grid){
+        ZombieWorld.Scene.main.grid = grid;
+        ZombieWorld.Scene.main.noBuild = true;
+      }
+
+      ZombieWorld.Scene.createWorld(ZombieWorld.Scene.main, function(){
+        var x = Crafty.math.randomInt(1070,1090);
+        var y = Crafty.math.randomInt(100,1000);
+        var my_player = JSON.parse(localStorage.getItem('user'));
+
+        my_player.x = x;
+        my_player.y = y;
+        my_player.grid = ZombieWorld.Scene.main.grid;
+
+        my_player.Enemy = {
+          Pedro: {name: 'Pedro'},
+          Juan: {name: 'Juan'}
+        };
+
+        ZombieWorld.socket.emit('Create player', my_player);
+        // ZombieWorld.socket.emit('Player list');
+      });
+    });
 
     ZombieWorld.socket.on('remove player', function(message, player){
       console.log(message);
@@ -34,7 +63,6 @@ ZombieWorld.Scene.main = {
         if(!ZombieWorld.players[username]){
           if(!player.zombieController){
             var local = my_player.username === username;
-            console.log(player);
             ZombieWorld.players[username] = player;
             ZombieWorld.players[username].Entity = ZombieWorld.Entity.Player(local, player);
 
@@ -56,23 +84,6 @@ ZombieWorld.Scene.main = {
 
       });
 
-    });
-
-    ZombieWorld.Scene.createWorld(this, function(){
-      var x = Crafty.math.randomInt(1070,1090);
-      var y = Crafty.math.randomInt(100,500);
-      var my_player = JSON.parse(localStorage.getItem('user'));
-
-      my_player.x = x;
-      my_player.y = y;
-
-      my_player.Enemy = {
-        Pedro: {name: 'Pedro'},
-        Juan: {name: 'Juan'}
-      };
-
-      ZombieWorld.socket.emit('Create player', my_player);
-      // ZombieWorld.socket.emit('Player list');
     });
 
     ZombieWorld.sprites = {
@@ -102,4 +113,3 @@ ZombieWorld.Scene.main = {
   }
 
 };
-

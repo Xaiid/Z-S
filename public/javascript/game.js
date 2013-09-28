@@ -18,18 +18,7 @@ var ZombieWorld = {
   Component: {},
   Entity:    {},
   Scene:     {},
-
-  properties:{
-    solid_components: '2D, Canvas, Solid, Color, DOM, ',
-    components: '2D, Canvas, Color, DOM, ',
-    animation_speed: 10,
-    player: {
-      speed: 3
-    },
-    zombie: {
-      speed: 1
-    }
-  },
+  properties: {},
 
   width: function(){
     return this.map.width * this.map.title.width;
