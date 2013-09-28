@@ -50,6 +50,72 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
     //});
   //},
 
+  bullet: function(){
+    if(!this.shoot){
+      this.shoot = true;
+
+      var bullet;
+      var self   = this;
+
+      setTimeout(function(){
+        self.shoot = false;
+      }, 100);
+
+
+      if(this.facing==='left'){
+        bullet = ZombieWorld.Entity.Bullet({x: this.x, y:this.y});
+        var x1 = this.x;
+        var i1 = 0;
+        for(x1; x1 > 0 ; x1--){
+          i1+= 10;
+          _.delay(function(pos){
+            bullet.x = pos;
+          }, i1, x1);
+        }
+      }
+
+      if(this.facing ==='up'){
+        bullet = ZombieWorld.Entity.Bullet({x: this.x + 13, y:this.y});
+        var y1 = this.y;
+        var i2 = 0;
+        for(y1; y1 > 0 ; y1--){
+          i2 +=10;
+          _.delay(function(pos){
+            bullet.y = pos;
+          }, i2 , y1);
+        }
+      }
+
+
+      if(this.facing ==='right'){
+        bullet = ZombieWorld.Entity.Bullet({x: this.x + 25, y:this.y});
+        var x2 = this.x + 25;
+        var i3 = 0;
+        for(x2; x2 < 1200 ; x2++){
+          i3 +=10;
+          _.delay(function(pos){
+            bullet.x = pos;
+          }, i3 , x2);
+        }
+      }
+
+      if(this.facing ==='down'){
+        bullet = ZombieWorld.Entity.Bullet({x: this.x + 15, y:this.y});
+        var y2 = this.y;
+        var i4 = 0;
+        for(y2; y2 < 640 ; y2++){
+          i4 +=10;
+          _.delay(function(pos){
+            bullet.y = pos;
+          }, i4 , y2);
+        }
+      }
+
+
+    }
+
+  },
+
   listenTo: function(){
 
     ZombieWorld.socket.on('Move player', function(data){

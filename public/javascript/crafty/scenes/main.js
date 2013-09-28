@@ -120,7 +120,7 @@ ZombieWorld.Scene.main = {
 
 var getFreeCoordinates = function(min,max){
   var grid = ZombieWorld.Scene.main.grid;
-  var i = Math.ceil(ZombieWorld.map.height/2)
+  var i = Math.ceil(ZombieWorld.map.height/2);
   for(var x = 1; x < 4; x++){
     for(var y = i; y < i+4; y++){
       grid[x][y] = true;

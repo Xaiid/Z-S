@@ -1,5 +1,5 @@
 ZombieWorld.Entity.Player = function(local, player){
-  var playerProto = Crafty.e("2D, Canvas, Controls, Collision, Fourway, SpriteAnimation, PlayerControls, " + player.name)
+  var playerProto = Crafty.e("2D, Canvas, Controls, Collision, Fourway, SpriteAnimation, PlayerControls, gravity," + player.name)
         .attr({
           x: (player.x * ZombieWorld.map.title.width),
           y: (player.y * ZombieWorld.map.title.height),
@@ -29,13 +29,22 @@ ZombieWorld.Entity.Player = function(local, player){
       .bind("EnterFrame", function(e) {
         if(this.isDown("LEFT_ARROW")) {
           ZombieWorld.socket.emit('Move player', {x: this.x, y: this.y, to: "LEFT_ARROW"});
+          this.facing = 'left';
         } else if(this.isDown("RIGHT_ARROW")) {
           ZombieWorld.socket.emit('Move player', {x: this.x, y: this.y, to: "RIGHT_ARROW"});
+          this.facing = 'right';
         } else if(this.isDown("UP_ARROW")) {
           ZombieWorld.socket.emit('Move player', {x: this.x, y: this.y, to: "UP_ARROW"});
+          this.facing = 'up';
         } else if(this.isDown("DOWN_ARROW")) {
           ZombieWorld.socket.emit('Move player', {x: this.x, y: this.y, to: "DOWN_ARROW"});
+          this.facing = 'down';
         }
+
+        if(this.isDown("SPACE")){
+          this.bullet();
+        }
+
       });
     }else{
       playerProto.listenTo();
