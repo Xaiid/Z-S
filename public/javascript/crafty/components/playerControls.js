@@ -6,6 +6,7 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
     return this;
   },
 
+  //A bullet hit a Zombie
   stopOnSolidsZ: function() {
 
     this.onHit('Solid', function(){
@@ -69,6 +70,7 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
         for(x1; x1 > 0 ; x1--){
           i1+= 10;
           _.delay(function(pos){
+            console.log(pos);
             bullet.x = pos;
           }, i1, x1);
         }
