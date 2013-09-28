@@ -1,9 +1,1 @@
-body {
-  padding: 50px;
-  overflow: hidden;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
+@import "css/main.css";
