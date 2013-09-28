@@ -6,10 +6,19 @@ ZombieWorld.Scene.createWorld = function(world, cb){
   var wait = ['grass', 'walls', 'safe'];
 
   var sendCb = _.after(wait.length, function(){
-    ZombieWorld.land.Obstacle({grid: world.grid, obstacles: world.options.obstacles}, function(){
-      console.log('Obstacles ready');
-      return cb();
-    });
+    if(world.noBuild){
+      removeSafeZone(world.grid, function(){
+        ZombieWorld.land.Obstacle({grid: world.grid, obstacles: world.options.obstacles, noBuild: world.noBuild}, function(){
+          console.log('Obstacles ready');
+          return cb();
+        });
+      });
+    } else {
+      ZombieWorld.land.Obstacle({grid: world.grid, obstacles: world.options.obstacles, noBuild: world.noBuild}, function(){
+        console.log('Obstacles ready');
+        return cb();
+      });
+    }
   });
 
   ZombieWorld.land.walls({grid: world.grid}, function(){
@@ -39,4 +48,18 @@ ZombieWorld.Scene.createGrid = function(){
   });
 
   return grid;
+};
+
+var removeSafeZone = function(grid, cb){
+  var i = Math.ceil(ZombieWorld.map.height/2)
+  for(var x = 1; x < 4; x++){
+    for(var y = i; y < i+4; y++){
+      grid[x][y] = false;
+      grid[x][y] = false;
+      grid[x][y] = false;
+      grid[x][y] = false;
+    }
+  }
+
+  return cb();
 };

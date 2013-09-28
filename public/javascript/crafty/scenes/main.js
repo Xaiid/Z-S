@@ -20,7 +20,6 @@ ZombieWorld.Scene.main = {
         ZombieWorld.Scene.main.noBuild = true;
       }
 
-      console.log(ZombieWorld.Scene.main.grid);
       ZombieWorld.Scene.createWorld(ZombieWorld.Scene.main, function(){
         var x = Crafty.math.randomInt(1070,1090);
         var y = Crafty.math.randomInt(100,1000);

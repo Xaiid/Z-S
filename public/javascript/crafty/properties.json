@@ -24,6 +24,11 @@ ZombieWorld.properties = {
       "width": 0,
       "height": 3,
       "color": "rgb(96, 215, 245)"
+    },
+    "copy": {
+      "width": 0,
+      "height": 1,
+      "color": "rgb(96, 215, 245)"
     }
   }
 };

@@ -3,7 +3,11 @@ ZombieWorld.land.Obstacle = function(options, cb){
   var grid = options.grid;
   var obstacles = options.obstacles;
 
-  var times = obstacles.large + obstacles.medium + obstacles.small;
+  if(options.noBuild){
+    var times = ZombieWorld.map.width * ZombieWorld.map.height;
+  } else {
+    var times = obstacles.large + obstacles.medium + obstacles.small;
+  }
 
   var count = {
     large: obstacles.large,
@@ -14,30 +18,40 @@ ZombieWorld.land.Obstacle = function(options, cb){
   var sendCb = _.after(times, cb);
 
   while(Crafty('Obstacle').length < times){
-    for (var x = 1; x < ZombieWorld.map.width - 2; x++) {
-      for (var y = 1; y < ZombieWorld.map.height - 2; y++) {
-        if (Math.random() < 0.02 && Crafty('Obstacle').length < times){
-          // Place a obstacle at the current tile
-          var type = _.sample(['small', 'medium', 'large']);
+    if(options.noBuild){
+      for (var x = 1; x < ZombieWorld.map.width - 2; x++) {
+        for (var y = 1; y < ZombieWorld.map.height - 1; y++) {
+          if (grid[x][y]){
+            //Create object
+            ZombieWorld.Entity.Obstacle({ x: x, y: y, type: 'copy'});
+            sendCb();
+          }
+        }
+      }
+    } else {
+      for (var x = 1; x < ZombieWorld.map.width - 2; x++) {
+        for (var y = 1; y < ZombieWorld.map.height - 2; y++) {
+          if (Math.random() < 0.02 && Crafty('Obstacle').length < times){
+            // Place a obstacle at the current tile
+            var type = _.sample(['small', 'medium', 'large']);
 
-          if(Crafty('Obstacle').length < times && count[type] > 0){
-            //Take spots necessary fot that object
-            populateGrid({x: x, y: y, type: type, grid: grid}, function(free){
-              if(free){
-                //Create object
-                count[type] -= 1;
-                //grid[x][y] = true;
-                ZombieWorld.Entity.Obstacle({ x: x, y: y, type: type});
-                sendCb();
-              }
-            });
+            if(Crafty('Obstacle').length < times && count[type] > 0){
+              //Take spots necessary fot that object
+              populateGrid({x: x, y: y, type: type, grid: grid}, function(free){
+                if(free){
+                  //Create object
+                  count[type] -= 1;
+                  ZombieWorld.Entity.Obstacle({ x: x, y: y, type: type});
+                  sendCb();
+                }
+              });
+            }
           }
         }
       }
     }
   }
 };
-
 
 var populateGrid = function(options, cb){
   var origin = {
