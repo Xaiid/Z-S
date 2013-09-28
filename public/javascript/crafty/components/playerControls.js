@@ -63,7 +63,7 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
 
 
       if(this.facing==='left'){
-        bullet = ZombieWorld.Entity.Bullet({x: this.x, y:this.y});
+        bullet = ZombieWorld.Entity.Bullet({x: this.x, y:this.y, w: 5, h:2});
         var x1 = this.x;
         var i1 = 0;
         for(x1; x1 > 0 ; x1--){
@@ -75,7 +75,7 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
       }
 
       if(this.facing ==='up'){
-        bullet = ZombieWorld.Entity.Bullet({x: this.x + 13, y:this.y});
+        bullet = ZombieWorld.Entity.Bullet({x: this.x + 13, y:this.y, w:2, h:5});
         var y1 = this.y;
         var i2 = 0;
         for(y1; y1 > 0 ; y1--){
@@ -88,10 +88,11 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
 
 
       if(this.facing ==='right'){
-        bullet = ZombieWorld.Entity.Bullet({x: this.x + 25, y:this.y});
+        bullet = ZombieWorld.Entity.Bullet({x: this.x + 25, y:this.y, w: 5, h: 2});
         var x2 = this.x + 25;
+        var maxX = ZombieWorld.map.width * ZombieWorld.map.title.width;
         var i3 = 0;
-        for(x2; x2 < 1200 ; x2++){
+        for(x2; x2 < maxX ; x2++){
           i3 +=10;
           _.delay(function(pos){
             bullet.x = pos;
@@ -100,10 +101,11 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
       }
 
       if(this.facing ==='down'){
-        bullet = ZombieWorld.Entity.Bullet({x: this.x + 15, y:this.y});
+        bullet = ZombieWorld.Entity.Bullet({x: this.x + 15, y:this.y, w: 2, h: 5});
         var y2 = this.y;
+        var maxY = ZombieWorld.map.height * ZombieWorld.map.title.height;
         var i4 = 0;
-        for(y2; y2 < 640 ; y2++){
+        for(y2; y2 < maxY ; y2++){
           i4 +=10;
           _.delay(function(pos){
             bullet.y = pos;

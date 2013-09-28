@@ -3,8 +3,8 @@ ZombieWorld.Entity.Bullet = function(options){
         .attr({
           x: options.x,
           y: options.y,
-          w: 5,
-          h: 2
+          w: options.w,
+          h: options.h
         })
         .color('rgb(250,0,0)');
 };
