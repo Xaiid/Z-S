@@ -4,6 +4,7 @@ var ZombieWorld = {
 };
 
 $( function(){
+  localStorage.clear();
 
   ZombieWorld.socket.on('update players', function(message, players){
     console.log(message);
