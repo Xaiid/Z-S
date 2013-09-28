@@ -12,8 +12,9 @@ ZombieWorld.land.grass = function(cb){
         .bind('Click', function(e){
 
           if(ZombieWorld.player.x && !ZombieWorld.player.moving && ZombieWorld.control){
-            ZombieWorld.player.moving = true;
-
+            ZombieWorld.player.moving     = true;
+            ZombieWorld.player.shouldMove = true;
+            
             var startX  = ZombieWorld.player.x;
             var startY  = ZombieWorld.player.y;
             var speed   = ZombieWorld.properties.zombie.speed;
@@ -32,11 +33,11 @@ ZombieWorld.land.grass = function(cb){
               if(startX <= self.x){ return cb(); }
               var timer = function(){
                 setTimeout(function(){
-                  ZombieWorld.player.animate('walk_left', 15, -1);
+                  ZombieWorld.player.animate('walk_left', 10, -1);
                   startX-=speed;
                   ZombieWorld.player.x = startX;
                   ZombieWorld.socket.emit('Move zombie', {x: startX, y: startY, to: "walk_left", who: ZombieWorld.player.name});
-                  if(startX > self.x){
+                  if(startX > self.x && ZombieWorld.player.shouldMove){
                     timer();
                   }else{ return cb(); }
                 }, 30);
@@ -49,11 +50,11 @@ ZombieWorld.land.grass = function(cb){
 
               var timer = function(){
                 setTimeout(function(){
-                  ZombieWorld.player.animate('walk_right', 15, -1);
+                  ZombieWorld.player.animate('walk_right', 10, -1);
                   startX+=speed;
                   ZombieWorld.socket.emit('Move zombie', {x: startX, y: startY, to: "walk_right", who: ZombieWorld.player.name});
                   ZombieWorld.player.x = startX;
-                  if(startX < self.x){
+                  if(startX < self.x && ZombieWorld.player.shouldMove){
                     timer();
                   }else{ return cb(); }
                 }, 30);
@@ -66,11 +67,11 @@ ZombieWorld.land.grass = function(cb){
 
               var timer = function(){
                 setTimeout(function(){
-                  ZombieWorld.player.animate('walk_up', 15, -1);
+                  ZombieWorld.player.animate('walk_up', 10, -1);
                   startY-=speed;
                   ZombieWorld.player.y = startY;
                   ZombieWorld.socket.emit('Move zombie', {x: startX, y: startY, to: "walk_up", who: ZombieWorld.player.name});
-                  if(startY > self.y){
+                  if(startY > self.y && ZombieWorld.player.shouldMove){
                     timer();
                   }else{ return cb(); }
                 }, 30);
@@ -87,7 +88,7 @@ ZombieWorld.land.grass = function(cb){
                   startY+=speed;
                   ZombieWorld.socket.emit('Move zombie', {x: startX, y: startY, to: "walk_down", who: ZombieWorld.player.name});
                   ZombieWorld.player.y = startY;
-                  if(startY < self.y){
+                  if(startY < self.y && ZombieWorld.player.shouldMove){
                     timer();
                   }else{ return cb(); }
                 }, 30);
