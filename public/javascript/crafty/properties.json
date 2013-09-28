@@ -1,0 +1,29 @@
+ZombieWorld.properties = {
+  "solid_components": "2D, Canvas, Solid, Color, DOM, ",
+  "components": "2D, Canvas, Color, DOM, ",
+  "player_character": "2D, Canvas, SpriteAnimation, ",
+  animation_speed: 10,
+  "player": {
+    "speed": 3
+  },
+  "zombie": {
+    "speed": 1
+  },
+  "obstacle": {
+    "large": {
+      "width": 3,
+      "height": 4,
+      "color": "rgb(17, 20, 122)"
+    },
+    "medium": {
+      "width": 2,
+      "height": 3,
+      "color": "rgb(33, 86, 174)"
+    },
+    "small": {
+      "width": 2,
+      "height": 2,
+      "color": "rgb(96, 215, 245)"
+    }
+  }
+};

@@ -4,14 +4,15 @@ ZombieWorld.Scene.main = {
     name: 'main',
     zombies: 2,
     obstacles: {
-      large: 0,
-      medium: 4,
-      small: 10
+      large: 2,
+      medium: 14,
+      small: 20
     },
     color: 'rgb(119, 119, 119)'
   },
 
   init: function(){
+    this.grid = ZombieWorld.Scene.createGrid();
 
     ZombieWorld.socket.on('remove player', function(message, player){
       console.log(message);
@@ -105,4 +106,3 @@ ZombieWorld.Scene.main = {
   }
 
 };
-

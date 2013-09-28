@@ -3,11 +3,11 @@ ZombieWorld.Scene.createWorld = function(world, cb){
   //Set background initial color
   Crafty.background(world.options.color);
 
-  var wait = ['grass', 'walls', 'safe'];
+  var wait = ['grass', 'walls', 'safe', 'obstacles'];
 
   var sendCb = _.after(wait.length, cb);
 
-  ZombieWorld.land.safeZone(function(){
+  ZombieWorld.land.safeZone({grid: world.grid},function(){
     console.log('Safe zone ready');
     sendCb();
   });
@@ -22,5 +22,22 @@ ZombieWorld.Scene.createWorld = function(world, cb){
     sendCb();
   });
 
+  ZombieWorld.land.Obstacle({grid: world.grid, obstacles: world.options.obstacles}, function(){
+    console.log('Obstacles ready');
+    sendCb();
+  });
 
+};
+
+ZombieWorld.Scene.createGrid = function(){
+  var grid = [];
+ 
+  _.each(_.range(ZombieWorld.map.width - 1), function(x){
+    grid[x] = [];
+    _.each(_.range(ZombieWorld.map.height - 1), function(y){
+      grid[x][y] = false;
+    });
+  });
+
+  return grid;
 };
