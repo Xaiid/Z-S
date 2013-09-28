@@ -50,7 +50,7 @@ ZombieWorld.Scene.main = {
 
     ZombieWorld.Scene.createWorld(this, function(){
       var x = Crafty.math.randomInt(1070,1090);
-      var y = Crafty.math.randomInt(100,1000);
+      var y = Crafty.math.randomInt(100,500);
       var my_player = JSON.parse(localStorage.getItem('user'));
 
       my_player.x = x;
