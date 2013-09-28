@@ -31,8 +31,15 @@ ZombieWorld.Scene.main = {
         zombie1: [0,0]
       }),
 
-      elements: Crafty.sprite(32, "/images/grass.png", {
-        grass1: [0,0]
+      elements: Crafty.sprite(32, "/images/arenas.png", {
+        grass1: [0,0],
+        desert: [1,0],
+        rock:   [2,0],
+        wood:   [3,0]
+      }),
+
+      safeZone: Crafty.sprite(32, "/images/safe-zone.png", {
+        zone1: [0,0]
       })
 
     };
