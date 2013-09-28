@@ -23,18 +23,23 @@ ZombieWorld.Scene.main = {
       ZombieWorld.Scene.createWorld(ZombieWorld.Scene.main, function(){
         var my_player = JSON.parse(localStorage.getItem('user'));
 
-        var coordinates = getFreeCoordinates((ZombieWorld.map.width-10),(ZombieWorld.map.width-4));
-        my_player.x = coordinates.x;
-        my_player.y = coordinates.y;
         my_player.grid = ZombieWorld.Scene.main.grid;
 
-        my_player.Enemy = {
-          Pedro: {name: 'Pedro'},
-          Juan: {name: 'Juan'}
-        };
+        if(!my_player.zombieController){
+          var coordinates        = getFreeCoordinates((ZombieWorld.map.width-10),(ZombieWorld.map.width-4));
+          var Zombiecoordinates1 = getFreeCoordinates(2,10);
+          var Zombiecoordinates2 = getFreeCoordinates(2,10);
+
+          my_player.x = coordinates.x;
+          my_player.y = coordinates.y;
+
+          my_player.Enemy = {
+            Pedro: {name: 'Pedro', coordinates: Zombiecoordinates1},
+            Juan:  {name: 'Juan',  coordinates: Zombiecoordinates2}
+          };
+        }
 
         ZombieWorld.socket.emit('Create player', my_player);
-        // ZombieWorld.socket.emit('Player list');
       });
     });
 
@@ -66,8 +71,7 @@ ZombieWorld.Scene.main = {
             ZombieWorld.players[username].Entity = ZombieWorld.Entity.Player(local, player);
 
             _.each(ZombieWorld.players[username].Enemy, function(zombie, id){
-              var coordinates = getFreeCoordinates(2,10);
-              ZombieWorld.players[username].Enemy[id].Entity = ZombieWorld.Entity.zombie('zombie1', coordinates);
+              ZombieWorld.players[username].Enemy[id].Entity = ZombieWorld.Entity.zombie('zombie1', zombie.coordinates);
               ZombieWorld.players[username].Enemy[id].Entity.name = zombie.name;
             });
 
