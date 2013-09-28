@@ -1,4 +1,5 @@
 ZombieWorld.Scene.main = {
+
   options: {
     name: 'main',
     zombies: 2,
@@ -10,15 +11,20 @@ ZombieWorld.Scene.main = {
   init: function(){
 
     ZombieWorld.socket.on('update players', function(message, players){
-      var me = JSON.parse(localStorage.getItem('user'));
-      console.log('Me: ', me);
 
-      console.log('Message: ', message);
-      console.log('Players: ', players);
+      var my_player = JSON.parse(localStorage.getItem('user'));
 
-      // var playerID = 'player1'; //Player number for the sprite
-      // ZombieWorld.Entity.Player(playerID);
-      ZombieWorld.Entity.zombie('zombie1');
+      _.each(players, function(player, username){
+
+        if(!ZombieWorld.players[username]){
+          // player.Entity = ZombieWorld.Entity.zombie(my_player === username, 'zombie1');
+          ZombieWorld.players[username] = player;
+          // var playerID = 'player1'; //Player number for the sprite
+          ZombieWorld.Entity.Player(my_player === username, 'player1');
+        }
+
+      });
+
     });
 
     ZombieWorld.Scene.createWorld(this, function(){
@@ -29,6 +35,10 @@ ZombieWorld.Scene.main = {
 
       zombies: Crafty.sprite(32, "/images/Zombie-C.png", {
         zombie1: [0,0]
+      }),
+
+      players: Crafty.sprite(32, "/images/power-tanger.png", {
+        player1: [0,0]
       }),
 
       elements: Crafty.sprite(32, "/images/arenas.png", {
