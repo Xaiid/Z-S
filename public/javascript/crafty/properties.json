@@ -13,12 +13,12 @@ ZombieWorld.properties = {
     "large": {
       "width": 3,
       "height": 4,
-      "color": "rgb(17, 20, 122)"
+      "color": "rgb(96, 215, 245)"
     },
     "medium": {
       "width": 1,
       "height": 3,
-      "color": "rgb(33, 86, 174)"
+      "color": "rgb(96, 215, 245)"
     },
     "small": {
       "width": 0,

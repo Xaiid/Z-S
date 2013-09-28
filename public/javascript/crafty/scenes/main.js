@@ -14,7 +14,8 @@ ZombieWorld.Scene.main = {
   init: function(){
     this.grid = ZombieWorld.Scene.createGrid();
 
-    ZombieWorld.socket.on('Create world', function(grid){
+    ZombieWorld.socket.on('Create world', function(grid, players){
+      console.log(players.length);
       if(grid){
         ZombieWorld.Scene.main.grid = grid;
         ZombieWorld.Scene.main.noBuild = true;
@@ -102,20 +103,16 @@ ZombieWorld.Scene.main = {
       }),
 
       elements: Crafty.sprite(32, "/images/arenas.png", {
-        grass1: [0,0],
-        desert: [1,0],
-        rock:   [2,0],
-        wood:   [3,0]
-      }),
-
-      safeZone: Crafty.sprite(32, "/images/safe-zone.png", {
-        zone1: [0,0]
+        floor:    [0,0],
+        SafeZone: [0,1],
+        wall:     [0,2],
+        Obstacle: [0,3]
+        //desert: [1,0],
+        //rock:   [2,0],
+        //wood:   [3,0],
       })
-
     };
-
   }
-
 };
 
 var getFreeCoordinates = function(min,max){
@@ -140,3 +137,4 @@ var getFreeCoordinates = function(min,max){
 
   return {x: x, y: y};
 };
+

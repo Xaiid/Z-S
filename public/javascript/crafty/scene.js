@@ -26,15 +26,16 @@ ZombieWorld.Scene.createWorld = function(world, cb){
     sendCb();
   });
 
+  ZombieWorld.land.grass(function(){
+    console.log('Grass ready');
+    sendCb();
+  });
+
   ZombieWorld.land.safeZone({grid: world.grid},function(){
     console.log('Safe zone ready');
     sendCb();
   });
 
-  ZombieWorld.land.grass(function(){
-    console.log('Grass ready');
-    sendCb();
-  });
 };
 
 ZombieWorld.Scene.createGrid = function(){
@@ -51,7 +52,7 @@ ZombieWorld.Scene.createGrid = function(){
 };
 
 var removeSafeZone = function(grid, cb){
-  var i = Math.ceil(ZombieWorld.map.height/2)
+  var i = Math.ceil(ZombieWorld.map.height/2);
   for(var x = 1; x < 4; x++){
     for(var y = i; y < i+4; y++){
       grid[x][y] = false;

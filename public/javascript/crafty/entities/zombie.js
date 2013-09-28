@@ -8,7 +8,6 @@ ZombieWorld.Entity.zombie = function(zombie, options){
          if(!ZombieWorld.player.moving && ZombieWorld.control){
            ZombieWorld.player = this;
          }
-
        })
        .animate("walk_left", 0 , 1,  2)
        .animate("walk_right", 0 , 2 ,2)
