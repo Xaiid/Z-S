@@ -20,7 +20,7 @@ ZombieWorld.Scene.main = {
           // player.Entity = ZombieWorld.Entity.zombie(my_player === username, 'zombie1');
           ZombieWorld.players[username] = player;
           // var playerID = 'player1'; //Player number for the sprite
-          ZombieWorld.Entity.Player(my_player === username, 'player1');
+          ZombieWorld.Entity.Player(my_player.username === username, 'player1');
         }
 
       });

@@ -1,15 +1,17 @@
 ZombieWorld.Entity.Player = function(local, player){
-  return Crafty.e("2D, Canvas, Controls, Collision, SpriteAnimation, PlayerControls, " + player)
+  var playerProto = Crafty.e("2D, Canvas, Controls, Collision, SpriteAnimation, PlayerControls, " + player)
         .attr({
           x: Crafty.math.randomInt(100,130),
           y: Crafty.math.randomInt(100,130),
         })
         .requires('Keyboard')
-        .PlayerControls()
         .animate("walk_left", 0 , 1,  2)
         .animate("walk_right", 0 , 2 ,2)
         .animate("walk_up", 0,  3, 2)
-        .animate("walk_down", 0, 0 , 2)
+        .animate("walk_down", 0, 0 , 2);
+
+    if(local){
+        playerProto.PlayerControls()
         .bind("EnterFrame", function(e) {
           if(this.isDown("LEFT_ARROW")) {
             if(!this.isPlaying("walk_left")){
@@ -44,4 +46,8 @@ ZombieWorld.Entity.Player = function(local, player){
           this.y += this._speed;
           this.stop();
         });
+    }
+
+    return playerProto;
+
 };
