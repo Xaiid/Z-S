@@ -60,7 +60,7 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
 
       setTimeout(function(){
         self.shoot = false;
-      }, 100);
+      }, ZombieWorld.properties.bullet_speed);
 
 
       if(this.facing==='left'){

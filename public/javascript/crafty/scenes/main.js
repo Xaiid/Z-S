@@ -15,7 +15,6 @@ ZombieWorld.Scene.main = {
     this.grid = ZombieWorld.Scene.createGrid();
 
     ZombieWorld.socket.on('Create world', function(grid, players){
-      console.log(players.length);
       if(grid){
         ZombieWorld.Scene.main.grid = grid;
         ZombieWorld.Scene.main.noBuild = true;
