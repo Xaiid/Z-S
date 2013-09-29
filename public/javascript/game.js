@@ -40,7 +40,7 @@ var ZombieWorld = {
     });
 
     //Initialize game space
-    Crafty.init(ZombieWorld.width(), ZombieWorld.height());
+    Crafty.init(ZombieWorld.width(), ZombieWorld.height(), 'game-area');
 
     ZombieWorld.Scene.main.init();
   }
