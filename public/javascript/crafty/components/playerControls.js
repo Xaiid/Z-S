@@ -10,8 +10,6 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
   stopOnSolidsZ: function() {
 
     this.onHit('Solid', function(){
-      //this.x = this.x -1;
-      //this.y = this.y -1;
       this._speed = 0;
       if (this._movement) {
         this.x -= this._movement.x;

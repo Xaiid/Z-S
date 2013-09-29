@@ -5,8 +5,9 @@ ZombieWorld.Entity.zombie = function(zombie, options){
           y: (options.y * ZombieWorld.map.title.height)
         })
        .bind('Click', function(e) {
-         if(!ZombieWorld.player.moving && ZombieWorld.control){
-           ZombieWorld.player = this;
+         if (ZombieWorld.control){
+           ZombieWorld.zombies[this.name] = this;
+           ZombieWorld.currentZombie = this.name;
          }
        })
        .animate("walk_left", 0 , 1,  2)
