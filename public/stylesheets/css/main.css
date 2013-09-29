@@ -215,3 +215,58 @@ p {
   line-height: 49px;
   padding-left: 1px;
 }
+
+/* line 77, ../sass/index.sass */
+#login {
+  background: rgba(188, 185, 158, 0.4);
+  height: 700px;
+  margin: 60px;
+  padding: 40px;
+}
+/* line 82, ../sass/index.sass */
+#login h1 {
+  font-size: 48px;
+  color: #cdccbc;
+}
+/* line 85, ../sass/index.sass */
+#login .col-md-6 {
+  margin: 0 auto;
+  float: none;
+  text-align: center;
+}
+/* line 89, ../sass/index.sass */
+#login .col-md-6 label {
+  font-size: 48px;
+  color: #524832;
+  margin-bottom: 45px;
+  width: 100%;
+}
+/* line 94, ../sass/index.sass */
+#login .col-md-6 #username {
+  -webkit-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.46);
+  box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.46);
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  border: 5px solid #626154;
+  background: #cdccbc;
+  width: 80%;
+  height: 90px;
+  margin-bottom: 100px;
+  padding: 20px;
+}
+/* line 103, ../sass/index.sass */
+#login .col-md-6 .btn {
+  clear: both;
+  clear: both;
+  width: 180px;
+  height: 60px;
+}
+
+/* line 110, ../sass/index.sass */
+input[type="text"], input[type="password"] {
+  outline: 0;
+}

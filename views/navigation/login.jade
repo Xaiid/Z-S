@@ -3,8 +3,10 @@ extends ../layout
 block content
   script(src="/javascript/controllers/login.js")
 
-  h1 Login page
-  form#loginForm
-    label Username
-    input#username
-    input(type="submit", value="Join")
+  #login
+    h1 Login page
+    .col-md-6
+      form#loginForm
+        label Username
+        input#username
+        input.btn.btn-lg.btn-primary(type="submit", value="Join")
