@@ -112,7 +112,7 @@ footer {
   color: #cdccbc;
 }
 
-/* line 1, ../sass/index.sass */
+/* line 3, ../sass/index.sass */
 #hand-fixed {
   background: black url("../../images/zombie-hand.jpg") no-repeat;
   background-size: 100%;
@@ -125,27 +125,32 @@ footer {
   z-index: -1;
 }
 
-/* line 12, ../sass/index.sass */
+/* line 14, ../sass/index.sass */
 h1 {
   font-size: 24px;
 }
 
-/* line 15, ../sass/index.sass */
+/* line 17, ../sass/index.sass */
 p {
   font-size: 18px;
 }
 
-/* line 18, ../sass/index.sass */
+/* line 20, ../sass/index.sass */
+a {
+  color: #908b6c;
+}
+
+/* line 23, ../sass/index.sass */
 .btn-primary {
   background: #262f1e;
   border-color: #1a1e16;
 }
-/* line 21, ../sass/index.sass */
+/* line 26, ../sass/index.sass */
 .btn-primary:hover {
   background: #1a1e16;
 }
 
-/* line 24, ../sass/index.sass */
+/* line 29, ../sass/index.sass */
 #introduction {
   -webkit-box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
@@ -162,37 +167,37 @@ p {
   max-height: 360px;
   white-space: nowrap;
 }
-/* line 37, ../sass/index.sass */
+/* line 42, ../sass/index.sass */
 #introduction .btn {
   margin-top: 40px;
 }
-/* line 39, ../sass/index.sass */
+/* line 44, ../sass/index.sass */
 #introduction::-webkit-scrollbar {
   height: 8px;
   width: 8px;
   background: inherit;
 }
-/* line 43, ../sass/index.sass */
+/* line 48, ../sass/index.sass */
 #introduction::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0);
   -webkit-border-radius: 1ex;
 }
-/* line 46, ../sass/index.sass */
+/* line 51, ../sass/index.sass */
 #introduction::-webkit-scrollbar-track {
   background: none;
 }
-/* line 50, ../sass/index.sass */
+/* line 55, ../sass/index.sass */
 #introduction .step-one {
   display: inline-block;
   width: 100%;
 }
-/* line 54, ../sass/index.sass */
+/* line 59, ../sass/index.sass */
 #introduction .step-two {
   display: inline-block;
   width: 100%;
 }
 
-/* line 58, ../sass/index.sass */
+/* line 63, ../sass/index.sass */
 .next, .prev {
   float: right;
   background: #bcb99e;
@@ -203,45 +208,45 @@ p {
   padding-left: 4px;
   cursor: pointer;
 }
-/* line 67, ../sass/index.sass */
+/* line 72, ../sass/index.sass */
 .next:hover, .prev:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8;
 }
 
-/* line 70, ../sass/index.sass */
+/* line 75, ../sass/index.sass */
 .prev {
   float: left;
   line-height: 49px;
   padding-left: 1px;
 }
 
-/* line 77, ../sass/index.sass */
+/* line 82, ../sass/index.sass */
 #login {
   background: rgba(188, 185, 158, 0.4) url("../../images/zom1.png") no-repeat 90% 90%;
   height: 700px;
   margin: 60px;
   padding: 40px;
 }
-/* line 82, ../sass/index.sass */
+/* line 87, ../sass/index.sass */
 #login h1 {
   font-size: 48px;
   color: #cdccbc;
 }
-/* line 85, ../sass/index.sass */
+/* line 90, ../sass/index.sass */
 #login .col-md-6 {
   margin: 0 auto;
   float: none;
   text-align: center;
 }
-/* line 89, ../sass/index.sass */
+/* line 94, ../sass/index.sass */
 #login .col-md-6 label {
   font-size: 48px;
   color: #524832;
   margin-bottom: 45px;
   width: 100%;
 }
-/* line 94, ../sass/index.sass */
+/* line 99, ../sass/index.sass */
 #login .col-md-6 #username {
   -webkit-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.46);
   -moz-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.46);
@@ -258,7 +263,7 @@ p {
   margin-bottom: 100px;
   padding: 20px;
 }
-/* line 103, ../sass/index.sass */
+/* line 108, ../sass/index.sass */
 #login .col-md-6 .btn {
   clear: both;
   clear: both;
@@ -266,7 +271,44 @@ p {
   height: 60px;
 }
 
-/* line 110, ../sass/index.sass */
+/* line 115, ../sass/index.sass */
 input[type="text"], input[type="password"] {
   outline: 0;
+}
+
+/* line 1, ../sass/error.sass */
+#err404 {
+  color: #cdccbc;
+  background: transparent url("../../images/zom2.png") no-repeat 90% 40%;
+  padding: 80px 0;
+}
+/* line 6, ../sass/error.sass */
+#err404 h1 {
+  font-size: 72px;
+  color: #cdccbc;
+}
+/* line 10, ../sass/error.sass */
+#err404 h2 {
+  font-size: 48px;
+  color: #cdccbc;
+  margin-top: 40px;
+}
+/* line 15, ../sass/error.sass */
+#err404 ul {
+  margin: 50px 0;
+}
+/* line 17, ../sass/error.sass */
+#err404 ul li a {
+  font-size: 24px;
+}
+/* line 20, ../sass/error.sass */
+#err404 .divider {
+  width: 60%;
+  border: 3px solid #897943;
+  margin-bottom: 60px;
+}
+/* line 25, ../sass/error.sass */
+#err404 #title {
+  font-size: 60px;
+  color: #cdccbc;
 }

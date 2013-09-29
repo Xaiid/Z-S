@@ -1,83 +1,163 @@
-/*
-Syntax error: Undefined mixin 'box-shadow'.
-        on line 25 of /Users/tangosource/work/zombie-survival/public/stylesheets/sass/index.sass, in `box-shadow'
-        from line 25 of /Users/tangosource/work/zombie-survival/public/stylesheets/sass/index.sass
+/* line 3, ../sass/index.sass */
+#hand-fixed {
+  background: black url("../../images/zombie-hand.jpg") no-repeat;
+  background-size: 100%;
+  overflow: hidden;
+  position: fixed;
+  height: 90%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 
-Backtrace:
-/Users/tangosource/work/zombie-survival/public/stylesheets/sass/index.sass:25:in `box-shadow'
-/Users/tangosource/work/zombie-survival/public/stylesheets/sass/index.sass:25
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:253:in `visit_mixin'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/tree/root_node.rb:20:in `render'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/engine.rb:315:in `_render'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/sass-3.2.11/lib/sass/engine.rb:262:in `render'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `block (2 levels) in compile'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `block in compile'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `block (2 levels) in run'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `block in run'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:147:in `recompile'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `call'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `run_callback'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/path.rb:55:in `callback_action'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/path.rb:35:in `update'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/state/directory.rb:39:in `block in modified'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `each'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/state/directory.rb:37:in `modified'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/state/directory.rb:18:in `refresh'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:30:in `block in temporary_multipath_handler'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:27:in `each'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:27:in `temporary_multipath_handler'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:17:in `block (2 levels) in run'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:16:in `each'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:16:in `block in run'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/rb-fsevent-0.9.3/lib/rb-fsevent/fsevent.rb:43:in `call'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/rb-fsevent-0.9.3/lib/rb-fsevent/fsevent.rb:43:in `run'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/backends/rbfsevent.rb:20:in `run'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm/monitor.rb:26:in `run'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/fssm-0.2.10/lib/fssm.rb:70:in `monitor'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/commands/watch_project.rb:87:in `perform'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/bin/compass:30:in `block in <top (required)>'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/bin/compass:44:in `call'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/bin/compass:44:in `<top (required)>'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/bin/compass:23:in `load'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/bin/compass:23:in `<main>'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/bin/ruby_noexec_wrapper:14:in `eval'
-/Users/tangosource/.rvm/gems/ruby-2.0.0-p195/bin/ruby_noexec_wrapper:14:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined mixin 'box-shadow'.\A         on line 25 of /Users/tangosource/work/zombie-survival/public/stylesheets/sass/index.sass, in `box-shadow'\A         from line 25 of /Users/tangosource/work/zombie-survival/public/stylesheets/sass/index.sass"; }
+/* line 14, ../sass/index.sass */
+h1 {
+  font-size: 24px;
+}
+
+/* line 17, ../sass/index.sass */
+p {
+  font-size: 18px;
+}
+
+/* line 20, ../sass/index.sass */
+a {
+  color: #908b6c;
+}
+
+/* line 23, ../sass/index.sass */
+.btn-primary {
+  background: #262f1e;
+  border-color: #1a1e16;
+}
+/* line 26, ../sass/index.sass */
+.btn-primary:hover {
+  background: #1a1e16;
+}
+
+/* line 29, ../sass/index.sass */
+#introduction {
+  -webkit-box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.75);
+  width: 100%;
+  margin: 400px 0 0;
+  min-height: 350px;
+  background: #e3e1c7;
+  padding: 40px;
+  text-align: center;
+  line-height: 44px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-height: 360px;
+  white-space: nowrap;
+}
+/* line 42, ../sass/index.sass */
+#introduction .btn {
+  margin-top: 40px;
+}
+/* line 44, ../sass/index.sass */
+#introduction::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+  background: inherit;
+}
+/* line 48, ../sass/index.sass */
+#introduction::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0);
+  -webkit-border-radius: 1ex;
+}
+/* line 51, ../sass/index.sass */
+#introduction::-webkit-scrollbar-track {
+  background: none;
+}
+/* line 55, ../sass/index.sass */
+#introduction .step-one {
+  display: inline-block;
+  width: 100%;
+}
+/* line 59, ../sass/index.sass */
+#introduction .step-two {
+  display: inline-block;
+  width: 100%;
+}
+
+/* line 63, ../sass/index.sass */
+.next, .prev {
+  float: right;
+  background: #bcb99e;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  line-height: 50px;
+  padding-left: 4px;
+  cursor: pointer;
+}
+/* line 72, ../sass/index.sass */
+.next:hover, .prev:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+}
+
+/* line 75, ../sass/index.sass */
+.prev {
+  float: left;
+  line-height: 49px;
+  padding-left: 1px;
+}
+
+/* line 82, ../sass/index.sass */
+#login {
+  background: rgba(188, 185, 158, 0.4) url("../../images/zom1.png") no-repeat 90% 90%;
+  height: 700px;
+  margin: 60px;
+  padding: 40px;
+}
+/* line 87, ../sass/index.sass */
+#login h1 {
+  font-size: 48px;
+  color: #cdccbc;
+}
+/* line 90, ../sass/index.sass */
+#login .col-md-6 {
+  margin: 0 auto;
+  float: none;
+  text-align: center;
+}
+/* line 94, ../sass/index.sass */
+#login .col-md-6 label {
+  font-size: 48px;
+  color: #524832;
+  margin-bottom: 45px;
+  width: 100%;
+}
+/* line 99, ../sass/index.sass */
+#login .col-md-6 #username {
+  -webkit-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.46);
+  box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.46);
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  border: 5px solid #626154;
+  background: #cdccbc;
+  width: 80%;
+  height: 90px;
+  margin-bottom: 100px;
+  padding: 20px;
+}
+/* line 108, ../sass/index.sass */
+#login .col-md-6 .btn {
+  clear: both;
+  clear: both;
+  width: 180px;
+  height: 60px;
+}
+
+/* line 115, ../sass/index.sass */
+input[type="text"], input[type="password"] {
+  outline: 0;
+}
