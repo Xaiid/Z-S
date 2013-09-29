@@ -11,10 +11,9 @@ ZombieWorld.Scene.main = {
 
   init: function(){
     this.grid = ZombieWorld.Scene.createGrid();
-    this.stage = _.sample([0,1,2]);
+    this.stage = _.sample([1,2,3]);
 
     ZombieWorld.socket.on('Create world', function(options){
-      console.log(options);
       if(options.grid){
         ZombieWorld.Scene.main.grid = options.grid;
         ZombieWorld.Scene.main.stage = options.stage;
@@ -32,10 +31,10 @@ ZombieWorld.Scene.main = {
         }),
 
         elements: Crafty.sprite(32, "/images/arenas.png", {
-          floor:    [ZombieWorld.Scene.main.stage,0],
-          SafeZone: [ZombieWorld.Scene.main.stage,1],
-          wall:     [ZombieWorld.Scene.main.stage,2],
-          Obstacle: [ZombieWorld.Scene.main.stage,3]
+          floor:    [(ZombieWorld.Scene.main.stage-1),0],
+          SafeZone: [(ZombieWorld.Scene.main.stage-1),1],
+          wall:     [(ZombieWorld.Scene.main.stage-1),2],
+          Obstacle: [(ZombieWorld.Scene.main.stage-1),3]
         })
       };
 
