@@ -9,14 +9,26 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
   //A bullet hit a Zombie
   stopOnSolidsZ: function() {
 
-    this.onHit('Solid', function(){
-      this._speed = 0;
-      if (this._movement) {
-        this.x -= this._movement.x;
-        this.y -= this._movement.y;
-      }
+    this.onHit('Solid', function(e){
 
       ZombieWorld.player.shouldMove = false;
+
+      if(e[0].obj.x > this.x){
+        this.x -=1;
+      }
+
+      if(e[0].obj.x < this.x){
+        this.x +=1;
+      }
+
+      if(e[0].obj.y > this.y){
+        this.y -=1;
+      }
+
+      if(e[0].obj.y < this.y){
+        this.y +=1;
+      }
+
     });
 
     return this;

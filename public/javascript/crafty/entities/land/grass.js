@@ -14,8 +14,9 @@ ZombieWorld.land.grass = function(cb){
           var zombie = ZombieWorld.zombies[ZombieWorld.currentZombie];
           if(!zombie){ return false; }
 
-          if(zombie.x && ZombieWorld.control){
+          if(zombie.x && ZombieWorld.control && !zombie.moving){
             ZombieWorld.player.shouldMove = true;
+            zombie.moving = true;
             
             var startX  = zombie.x;
             var startY  = zombie.y;
@@ -25,6 +26,10 @@ ZombieWorld.land.grass = function(cb){
 
             var ready = function(num){
               zombie.stop();
+              count.push(num);
+              if(count.length === 4){
+                zombie.moving = false;
+              }
             };
 
             removeX = function(cb){
@@ -84,7 +89,7 @@ ZombieWorld.land.grass = function(cb){
                 setTimeout(function(){
                   zombie.animate('walk_down', 10, -1);
                   startY+=speed;
-                  ZombieWorld.socket.emit('Move zombie', {x: startX, y: startY, to: "walk_down", who: ZombieWorld.player.name});
+                  ZombieWorld.socket.emit('Move zombie', {x: startX, y: startY, to: "walk_down", who: zombie.name});
                   zombie.y = startY;
                   if(startY < self.y && ZombieWorld.player.shouldMove){
                     timer();
