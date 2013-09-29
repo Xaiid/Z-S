@@ -24,14 +24,7 @@ ZombieWorld.Scene.main = {
       ZombieWorld.sprites = {
 
         zombies: Crafty.sprite(32, "/images/ZombieSheet.png", {
-          zombie1: [0,0],
-          //zombie2: [3,0],
-          //zombie3: [6,0],
-          //zombie4: [9,0],
-          //zombie5: [0,4],
-          //zombie6: [3,4],
-          //zombie7: [6,4],
-          //zombie8: [9,4]
+          zombie1: [0,0]
         }),
 
         players: Crafty.sprite(32, "/images/power-tanger.png", {
