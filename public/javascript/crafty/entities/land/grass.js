@@ -12,6 +12,7 @@ ZombieWorld.land.grass = function(cb){
         .bind('Click', function(e){
 
           var zombie = ZombieWorld.zombies[ZombieWorld.currentZombie];
+          if(!zombie){ return false; }
 
           if(zombie.x && ZombieWorld.control){
             ZombieWorld.player.shouldMove = true;
