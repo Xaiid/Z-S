@@ -58,10 +58,10 @@ ZombieWorld.Scene.main = {
             my_player.y = coordinates.y;
 
             my_player.Enemy = {
-              Pedro: {name: 'Pedro', coordinates: Zombiecoordinates1, type: 'Zombie'},
-              Juan:  {name: 'Juan',  coordinates: Zombiecoordinates2, type: 'Zombie'},
-              Maria: {name: 'Maria', coordinates: Zombiecoordinates3, type: 'Zombie'},
-              Jose:  {name: 'Jose',  coordinates: Zombiecoordinates4, type: 'Zombie'}
+              Pedro: {name: 'Pedro', coordinates: Zombiecoordinates1, owner: my_player.username},
+              Juan:  {name: 'Juan',  coordinates: Zombiecoordinates2, owner: my_player.username},
+              Maria: {name: 'Maria', coordinates: Zombiecoordinates3, owner: my_player.username},
+              Jose:  {name: 'Jose',  coordinates: Zombiecoordinates4, owner: my_player.username}
             };
           }
 
@@ -104,6 +104,7 @@ ZombieWorld.Scene.main = {
             _.each(ZombieWorld.players[username].Enemy, function(zombie, id){
               ZombieWorld.players[username].Enemy[id].Entity = ZombieWorld.Entity.zombie('zombie1', zombie.coordinates);
               ZombieWorld.players[username].Enemy[id].Entity.name = zombie.name;
+              ZombieWorld.players[username].Enemy[id].Entity.owner= zombie.owner;
             });
 
             if(local){

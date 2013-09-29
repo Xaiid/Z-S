@@ -11,13 +11,9 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
   stopOnSolidsZ: function() {
 
     this.onHit('Solid', function(e){
-      if(this._life === 0){
-        e[0].obj.destroy();
-        this.destroy();
-      }
-
       if(e[0].obj.__c.Bullet){
         this._life -= 1;
+        ZombieWorld.socket.emit('Zombie hit', this.owner, this.name, this._life);
       }
 
       this._speed = 0;
@@ -161,6 +157,14 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
 
   listenTo: function(){
     var self = this;
+
+    ZombieWorld.socket.on('Zombie hits', function(username, name, lifes){
+      var zombie = ZombieWorld.players[username].Enemy[name]
+      if(lifes === 0){
+        zombie.Entity.destroy();
+      }
+      zombie._lifes = lifes;
+    });
 
     ZombieWorld.socket.on('Shoot', function(data){
       self.facing = data.facing;
