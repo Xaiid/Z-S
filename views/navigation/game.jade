@@ -2,11 +2,12 @@ extends ../layout
 
 block content
   h1  Run for your life
+  .chat-icon
   #chat-slide
     form#chatForm
       label Send message here
       textarea#msg
-      input(type="submit")
+      input.btn.btn-primary(type="submit")
     div#chat
 
   script(src='/javascript/game.js')

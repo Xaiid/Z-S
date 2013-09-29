@@ -11,5 +11,8 @@ $( function(){
       $cont.animate({scrollLeft: scroll - $cont.width()}, 500);
   });
 
+  $('.chat-icon').on('click',function(){
+      $('#chat-slide').toggleClass('visible');
+  });
 });
 
