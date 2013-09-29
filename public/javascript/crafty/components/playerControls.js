@@ -11,12 +11,13 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
   stopOnSolidsZ: function() {
 
     this.onHit('Solid', function(e){
+      if(this._life === 0){
+        e[0].obj.destroy();
+        this.destroy();
+      }
+
       if(e[0].obj.__c.Bullet){
         this._life -= 1;
-        if(this._life === 0){
-          e[0].obj.destroy();
-          this.destroy();
-        }
       }
 
       this._speed = 0;
