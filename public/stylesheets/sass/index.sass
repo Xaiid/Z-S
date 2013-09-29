@@ -120,14 +120,19 @@ input[type="text"], input[type="password"]
 
 .chat-icon
   display: none
+  +transition(1s)
   @media (max-width: 1450px)
     background: transparent url('../../images/chat.png') no-repeat
     position: absolute
     display: block
     top: 120px
     right: 0
-    height: 60px
-    width: 60px
+    height: 64px
+    width: 64px
+    z-index: 999
+    &.open
+      right: 38%
+      background: transparent url('../../images/close.png') no-repeat center center
 
 #chat-slide
   +border-radius(15px)
@@ -140,12 +145,13 @@ input[type="text"], input[type="password"]
   // width: 670px
   width: 18%
   height: 640px
+  +transition(1s)
   @media (min-width: 1451px)
     width: 18%
     display: block !important
   @media (max-width: 1450px)
     width: 0
-    display: none
+    overflow: hidden
     +transition(1s)
     &.visible
       +transition(1s)

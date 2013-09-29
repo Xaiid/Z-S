@@ -12,6 +12,7 @@ $( function(){
   });
 
   $('.chat-icon').on('click',function(){
+      $(this).toggleClass('open');
       $('#chat-slide').toggleClass('visible');
   });
 });
