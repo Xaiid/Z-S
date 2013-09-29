@@ -7,44 +7,47 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
     return this;
   },
 
-  //A bullet hit a Zombie
-  stopOnSolidsZ: function() {
-
-    this.onHit('Solid', function(e){
-      if(e[0].obj.__c.Bullet){
-        this._life -= 1;
-        ZombieWorld.socket.emit('Zombie hit', this.owner, this.name, this._life);
-      }
-
-      this._speed = 0;
-      if (this._movement) {
-        this.x -= this._movement.x;
-        this.y -= this._movement.y;
-      }
-
-      ZombieWorld.player.shouldMove = false;
-
-      if(e[0].obj.x > this.x){
-        this.x -=1;
-      }
-
-      if(e[0].obj.x < this.x){
-        this.x +=1;
-      }
-
-      if(e[0].obj.y > this.y){
-        this.y -=1;
-      }
-
-      if(e[0].obj.y < this.y){
-        this.y +=1;
-      }
-
-    });
-
+  stopOnSafeZone: function(e) {
+    this.onHit('SafeZone', this.stopZombieMovement);
     return this;
   },
- 
+  //A bullet hit a Zombie
+  stopOnSolidsZ: function() {
+    this.onHit('Solid', this.stopZombieMovement);
+    return this;
+  },
+
+  stopZombieMovement: function(e){
+    if(e[0].obj.__c.Bullet){
+      this._life -= 1;
+      ZombieWorld.socket.emit('Zombie hit', this.owner, this.name, this._life);
+    }
+
+    this._speed = 0;
+    if (this._movement) {
+      this.x -= this._movement.x;
+      this.y -= this._movement.y;
+    }
+
+    ZombieWorld.player.shouldMove = false;
+
+    if(e[0].obj.x > this.x){
+      this.x -=1;
+    }
+
+    if(e[0].obj.x < this.x){
+      this.x +=1;
+    }
+
+    if(e[0].obj.y > this.y){
+      this.y -=1;
+    }
+
+    if(e[0].obj.y < this.y){
+      this.y +=1;
+    }
+  },
+
   // Stops the movement
   stopMovement: function(e) {
     if(e[0].obj.name){
