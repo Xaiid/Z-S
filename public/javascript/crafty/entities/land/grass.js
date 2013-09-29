@@ -9,9 +9,7 @@ ZombieWorld.land.grass = function(cb){
       //generate the grass along the y-axis
       for(var j = 0; j < ZombieWorld.map.height; j++) {
         Crafty.e("2D, Canvas, floor, Mouse").attr({x: i * 30, y: j * 30})
-        .bind('MouseUp', function(e){
-          if( e.mouseButton == Crafty.mouseButtons.RIGHT ){
-
+        .bind('Click', function(e){
           var zombie = ZombieWorld.zombies[ZombieWorld.currentZombie];
           if(!zombie){ return false; }
 
@@ -115,7 +113,7 @@ ZombieWorld.land.grass = function(cb){
             addY(function(){
               ready(4);
             });
-          }}
+          }
         });
         sendCb();
       }
