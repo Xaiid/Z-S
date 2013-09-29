@@ -51,13 +51,17 @@ ZombieWorld.Scene.main = {
             var coordinates        = getFreeCoordinates((ZombieWorld.map.width-10),(ZombieWorld.map.width-4));
             var Zombiecoordinates1 = getFreeCoordinates(2,10);
             var Zombiecoordinates2 = getFreeCoordinates(2,10);
+            var Zombiecoordinates3 = getFreeCoordinates(2,10);
+            var Zombiecoordinates4 = getFreeCoordinates(2,10);
 
             my_player.x = coordinates.x;
             my_player.y = coordinates.y;
 
             my_player.Enemy = {
-              Pedro: {name: 'Pedro', coordinates: Zombiecoordinates1},
-              Juan:  {name: 'Juan',  coordinates: Zombiecoordinates2}
+              Pedro: {name: 'Pedro', coordinates: Zombiecoordinates1, type: 'Zombie'},
+              Juan:  {name: 'Juan',  coordinates: Zombiecoordinates2, type: 'Zombie'},
+              Maria: {name: 'Maria', coordinates: Zombiecoordinates3, type: 'Zombie'},
+              Jose:  {name: 'Jose',  coordinates: Zombiecoordinates4, type: 'Zombie'}
             };
           }
 
@@ -66,13 +70,16 @@ ZombieWorld.Scene.main = {
       }
     });
 
-    ZombieWorld.socket.on('remove player', function(message, player){
+    ZombieWorld.socket.on('remove player', function(message, player, died){
       console.log(message);
       if(!ZombieWorld.players[player]){ return false; }
 
-      _.each(ZombieWorld.players[player].Enemy, function(Enemie, Name){
-        Enemie.Entity.destroy();
-      });
+      if(!died){
+        _.each(ZombieWorld.players[player].Enemy, function(Enemie, Name){
+          Enemie.Entity.destroy();
+        });
+      }
+
 
       ZombieWorld.players[player].Entity.destroy();
       delete ZombieWorld.players[player];

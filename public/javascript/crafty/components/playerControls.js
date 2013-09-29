@@ -35,7 +35,12 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
   },
  
   // Stops the movement
-  stopMovement: function() {
+  stopMovement: function(e) {
+    if(e[0].obj.name){
+      this.destroy();
+      ZombieWorld.socket.emit('Kill Player', ZombieWorld.player.username);
+      return false;
+    }
     this._speed = 0;
     if (this._movement) {
       this.x -= this._movement.x;
