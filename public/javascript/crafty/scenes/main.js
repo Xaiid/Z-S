@@ -22,7 +22,7 @@ ZombieWorld.Scene.main = {
 
       ZombieWorld.sprites = {
 
-        zombies: Crafty.sprite(32, "/images/ZombieSheet.png", {
+        zombies: Crafty.sprite(32, "/images/Zombie-C.png", {
           zombie1: [0,0]
         }),
 
