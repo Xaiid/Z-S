@@ -1,12 +1,13 @@
 extends ../layout
 
 block content
-  h1  Run for your life, B*TCH!!!!!
-  form#chatForm
-    label Send message here
-    textarea#msg
-    input(type="submit")
-  div#chat
+  h1  Run for your life
+  #chat-slide
+    form#chatForm
+      label Send message here
+      textarea#msg
+      input(type="submit")
+    div#chat
 
   script(src='/javascript/game.js')
   script(src='/javascript/controllers/chat.js')
@@ -32,3 +33,5 @@ block content
   script(src='/javascript/crafty/scenes/main.js')
 
   #game-area
+  .space
+  #my-root-footer

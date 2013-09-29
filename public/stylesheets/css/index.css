@@ -161,3 +161,15 @@ a {
 input[type="text"], input[type="password"] {
   outline: 0;
 }
+
+/* line 118, ../sass/index.sass */
+.space {
+  height: 48px;
+}
+
+/* line 121, ../sass/index.sass */
+#chat-slide {
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  right: 0;
+}
