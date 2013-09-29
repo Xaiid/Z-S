@@ -10,23 +10,50 @@ ZombieWorld.Scene.main = {
   },
 
   init: function(){
-    if(!this.grid){
-      this.grid = ZombieWorld.Scene.createGrid();
-    }
+    this.grid = ZombieWorld.Scene.createGrid();
+    this.stage = _.sample([0,1,2]);
 
-    ZombieWorld.socket.on('Create world', function(grid, players){
-      if(grid){
-        ZombieWorld.Scene.main.grid = grid;
+    ZombieWorld.socket.on('Create world', function(options){
+      console.log(options);
+      if(options.grid){
+        ZombieWorld.Scene.main.grid = options.grid;
+        ZombieWorld.Scene.main.stage = options.stage;
         ZombieWorld.Scene.main.noBuild = true;
       }
 
+      ZombieWorld.sprites = {
+
+        zombies: Crafty.sprite(32, "/images/ZombieSheet.png", {
+          zombie1: [0,0],
+          //zombie2: [3,0],
+          //zombie3: [6,0],
+          //zombie4: [9,0],
+          //zombie5: [0,4],
+          //zombie6: [3,4],
+          //zombie7: [6,4],
+          //zombie8: [9,4]
+        }),
+
+        players: Crafty.sprite(32, "/images/power-tanger.png", {
+          player1: [0,0]
+        }),
+
+        elements: Crafty.sprite(32, "/images/arenas.png", {
+          floor:    [ZombieWorld.Scene.main.stage,0],
+          SafeZone: [ZombieWorld.Scene.main.stage,1],
+          wall:     [ZombieWorld.Scene.main.stage,2],
+          Obstacle: [ZombieWorld.Scene.main.stage,3]
+        })
+      };
+
       var my_player  = JSON.parse(localStorage.getItem('user'));
-      var exists = _.find(players,function(elem){ return elem.username === my_player.username; });
+      var exists = _.find(options.players,function(elem){ return elem.username === my_player.username; });
 
       if(!exists){
         ZombieWorld.Scene.createWorld(ZombieWorld.Scene.main, function(){
           var my_player  = JSON.parse(localStorage.getItem('user'));
           my_player.grid = ZombieWorld.Scene.main.grid;
+          my_player.stage = ZombieWorld.Scene.main.stage;
 
           if(!my_player.zombieController){
             var coordinates        = getFreeCoordinates((ZombieWorld.map.width-10),(ZombieWorld.map.width-4));
@@ -95,27 +122,6 @@ ZombieWorld.Scene.main = {
 
     });
 
-    ZombieWorld.sprites = {
-
-      zombies: Crafty.sprite(32, "/images/Zombie-C.png", {
-        zombie1: [0,0],
-        zombie2: [0,0]
-      }),
-
-      players: Crafty.sprite(32, "/images/power-tanger.png", {
-        player1: [0,0]
-      }),
-
-      elements: Crafty.sprite(32, "/images/arenas.png", {
-        floor:    [0,0],
-        SafeZone: [0,1],
-        wall:     [0,2],
-        Obstacle: [0,3]
-        //desert: [1,0],
-        //rock:   [2,0],
-        //wood:   [3,0],
-      })
-    };
   }
 };
 
