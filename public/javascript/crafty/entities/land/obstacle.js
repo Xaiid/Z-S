@@ -24,7 +24,7 @@ ZombieWorld.land.Obstacle = function(options, cb){
       for (var y = 1; y < ZombieWorld.map.height - 1; y++) {
         if (grid[x][y]){
           //Create object
-          ZombieWorld.Entity.Obstacle({ x: x, y: y, type: type});
+          ZombieWorld.Entity.Obstacle({ x: x, y: y, type: 'copy'});
         }
         sendCb();
       }

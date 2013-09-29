@@ -53,12 +53,15 @@ ZombieWorld.Scene.createGrid = function(){
 
 var removeSafeZone = function(grid, cb){
   var i = Math.ceil(ZombieWorld.map.height/2);
-  for(var x = 1; x < 4; x++){
+  for(var x = 1; x < 5; x++){
     for(var y = i; y < i+4; y++){
       grid[x][y] = false;
       grid[x][y] = false;
       grid[x][y] = false;
       grid[x][y] = false;
+      //Quick fix, need to figure out something better
+      grid[5][y] = false;
+      grid[x][i+4] = false;
     }
   }
 
