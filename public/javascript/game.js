@@ -35,6 +35,10 @@ var ZombieWorld = {
       console.log(error);
     });
 
+    ZombieWorld.socket.on('Send message', function(data){
+      $('#chat').append('<p>'+ data +'</p>');
+    });
+
     //Initialize game space
     Crafty.init(ZombieWorld.width(), ZombieWorld.height());
 
