@@ -65,7 +65,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 6, ../sass/main.sass */
+/* line 7, ../sass/main.sass */
 body {
   overflow: auto;
   font: 14px "mine", Helvetica, Arial, sans-serif;
@@ -81,35 +81,61 @@ body {
   background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
 }
 
-/* line 23, ../sass/main.sass */
+/* line 24, ../sass/main.sass */
 #title {
   font-size: 60px;
 }
 
-/* line 26, ../sass/main.sass */
+/* line 27, ../sass/main.sass */
 .navbar.navbar-inverse {
   padding: 20px 40px;
   height: 100px;
   background: rgba(35, 28, 21, 0.4);
 }
-/* line 30, ../sass/main.sass */
+/* line 31, ../sass/main.sass */
 .navbar.navbar-inverse .navbar-collapse {
   background: transparent;
 }
-/* line 32, ../sass/main.sass */
+/* line 33, ../sass/main.sass */
 .navbar.navbar-inverse .logo-tango {
   text-align: right;
   float: right;
   margin: 10px;
 }
 
-/* line 37, ../sass/main.sass */
+/* line 38, ../sass/main.sass */
 footer {
   background: rgba(0, 0, 0, 0.6);
   height: 60px;
   text-align: center;
   padding-top: 17px;
   color: #cdccbc;
+  margin-bottom: -60px;
+}
+
+/* line 10, ../../../../../.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 12, ../../../../../.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#main-container {
+  clear: both;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -60px;
+}
+/* line 18, ../../../../../.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#main-container #my-root-footer {
+  height: 60px;
+}
+
+/* line 20, ../../../../../.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#my-footer {
+  clear: both;
+  position: relative;
+  height: 60px;
 }
 
 /* line 3, ../sass/index.sass */

@@ -1,5 +1,6 @@
 @import "compass/reset"
 @import "compass/css3"
+@import "compass/layout/sticky-footer"
 @import "../css/bootstrap.min.css"
 @import "../css/fonts.css"
 
@@ -40,7 +41,9 @@ footer
   text-align: center
   padding-top: 17px
   color: #cdccbc
+  margin-bottom: -60px
 
+@include sticky-footer(60px, "#main-container", "#my-root-footer", "#my-footer")
 
 @import "index"
 

@@ -9,7 +9,7 @@ html
     script(src='/javascript/libs/jquery-1.10.2.min.js')
     script(src='/javascript/libs/underscore-min.js')
     script(src='/javascript/home.js')
-  body
+  body#main-container
     nav.navbar.navbar-inverse(role="navigation")
       .navbar-header
         button(type="button", class="navbar-toggle collapsed", data-toggle="collapse", data-target=".navbar-ex8-collapse")
@@ -35,6 +35,8 @@ html
 
     block content
 
-  footer
+    #my-root-footer
+
+  footer.navbar-fixed-bottom#my-footer
     p ZombieWorld | TangoSource | 2013
     
