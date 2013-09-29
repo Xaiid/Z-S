@@ -50,8 +50,9 @@ ZombieWorld.Scene.main = {
     ZombieWorld.socket.on('remove player', function(message, player){
       console.log(message);
       if(!ZombieWorld.players[player]){ return false; }
-      _.each(ZombieWorld.players[player].Enemies, function(Enemie){
-        Enemie.destroy();
+
+      _.each(ZombieWorld.players[player].Enemy, function(Enemie, Name){
+        Enemie.Entity.destroy();
       });
 
       ZombieWorld.players[player].Entity.destroy();
