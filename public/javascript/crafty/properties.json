@@ -7,7 +7,7 @@ ZombieWorld.properties = {
     "speed": 3
   },
   "zombie": {
-    "speed": 1
+    "speed": 2
   },
   //Width indicate how many spaces more (default 1) will this obstacle take
   "obstacle": {
