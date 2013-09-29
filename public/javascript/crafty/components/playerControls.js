@@ -1,5 +1,6 @@
 ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
   _speed: ZombieWorld.properties.player.speed,
+  _life: 5,
 
   stopOnSolids: function() {
     this.onHit('Solid', this.stopMovement);
@@ -10,6 +11,19 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
   stopOnSolidsZ: function() {
 
     this.onHit('Solid', function(e){
+      if(e[0].obj.__c.Bullet){
+        this._life -= 1;
+        if(this._life === 0){
+          e[0].obj.destroy();
+          this.destroy();
+        }
+      }
+
+      this._speed = 0;
+      if (this._movement) {
+        this.x -= this._movement.x;
+        this.y -= this._movement.y;
+      }
 
       ZombieWorld.player.shouldMove = false;
 
@@ -256,10 +270,7 @@ ZombieWorld.Component.PlayerControls = Crafty.c('PlayerControls', {
           }, i4 , y2);
         }
       }
-
-
     }
-
-  },
+  }
 
 });

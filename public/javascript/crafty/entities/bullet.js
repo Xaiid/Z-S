@@ -1,5 +1,5 @@
 ZombieWorld.Entity.Bullet = function(options){
-  return Crafty.e(ZombieWorld.properties.solid_components + 'Collision')
+  return Crafty.e('2D, Canvas, Solid, Color, Collision, Bullet')
         .attr({
           x: options.x,
           y: options.y,
@@ -7,7 +7,7 @@ ZombieWorld.Entity.Bullet = function(options){
           h: options.h
         })
         .collision()
-        .onHit('Obstacle', function(){
+        .onHit('Solid', function(){
           this.destroyed = true;
           this.destroy();
         })
