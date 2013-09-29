@@ -1,5 +1,11 @@
 $( function(){
 
+  $('#msg').on('keyup', function(event){
+    if(event.keyCode === 13){
+      $('#chatForm').submit();
+    }
+  });
+
   $('#chatForm').submit(function(event){
     var msg =  $('#msg');
 
